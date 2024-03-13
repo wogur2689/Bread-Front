@@ -1,0 +1,491 @@
+/*------------------------------------------------------------------*/
+/*  font
+/*------------------------------------------------------------------*/
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HSYuji-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSYuji-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*------------------------------------------------------------------*/
+/*  base
+/*------------------------------------------------------------------*/
+html,
+body,
+span,
+applet,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  outline: none;
+  color: $text-default;
+  font-family: "Pretendard-Regular";
+}
+html,
+body,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+blockquote {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after {
+  content: "";
+  content: none;
+}
+ul,
+ol {
+  margin: 0px;
+  padding: 0;
+}
+ul li,
+ol li {
+  margin: 0px;
+}
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+iframe {
+  max-width: 100%;
+}
+del {
+  text-decoration: line-through;
+}
+a,
+i {
+  border: none;
+}
+a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.bullet-list {
+  li {
+    text-align: left;
+    list-style: none;
+    height: auto;
+    padding-left: 10px;
+    position: relative;
+    font-size: 14px;
+    // color: $text-grey2;
+    margin-bottom: 6px;
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      left: 0;
+      top: 8px;
+      position: absolute;
+      border-radius: 100px;
+      border: 1px solid;
+      // color: $text-grey2;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+label {
+  display: flex;
+  &.required {
+    &:after {
+      margin-left: 0.5rem;
+      content: "*";
+      display: block;
+      width: 5px;
+      height: 5px;
+      font-size: 14px;
+      color: red;
+    }
+  }
+}
+
+select {
+  margin-right: 0.5rem;
+  border: 1px solid $line-bright;
+  outline: none;
+  min-width: 120px;
+  height: 36px;
+  padding: 5px;
+  box-sizing: border-box;
+  font-family: "Pretendard-Regular";
+}
+
+input {
+  width: 150px;
+  border: 1px solid $line-bright;
+  outline: none;
+  height: 36px;
+  padding: 5px;
+  box-sizing: border-box;
+
+  &.w-70 {
+    width: 70px !important;
+  }
+
+  &.w-80 {
+    width: 80px !important;
+  }
+
+  &.w-300 {
+    width: 300px !important;
+  }
+
+  &.w-500 {
+    width: 500px !important;
+  }
+}
+
+input[type="radio"] {
+  width: 15px !important;
+}
+
+/*------------------------------------------------------------------*/
+/*  font-custom
+/*------------------------------------------------------------------*/
+// Amount
+h1,
+.h1 {
+  font-size: 64px;
+}
+h2,
+.h2 {
+  font-size: 55px;
+}
+h3,
+.h3 {
+  font-size: 42px;
+}
+// Headline
+h4,
+.h4 {
+  font-size: 26px;
+}
+h5,
+.h5 {
+  font-size: 20px;
+}
+
+// body
+.body1 {
+  font-size: 17px;
+}
+.body2 {
+  font-size: 16px;
+}
+.body3 {
+  font-size: 14px;
+}
+.body4 {
+  font-size: 13px;
+}
+.body5 {
+  font-size: 16px;
+}
+
+/* /// body 기본 셋팅 */
+body {
+  margin: 0px;
+  min-width: 1024px;
+  width: 100%;
+}
+
+/* /// 자주 쓰는 margin */
+.mt5 {
+  margin-top: 5px;
+}
+.mt10 {
+  margin-top: 10px;
+}
+.mr-1 {
+  margin-right: 0.5rem;
+}
+.ml-1 {
+  margin-left: 0.5rem;
+}
+
+.clear {
+  clear: both;
+}
+
+/*------------------------------------------------------------------*/
+/*  button
+/*------------------------------------------------------------------*/
+.button {
+  width: 120px;
+  height: 40px;
+  border: 0;
+  padding: 6px 12px;
+  box-sizing: border-box;
+  color: $text-blue;
+  background-color: #fff;
+  border-radius: 4px;
+  &-primary {
+    background-color: $btn-default;
+    color: white;
+  }
+
+  &-outline-primary {
+    border: 1px solid $btn-default;
+  }
+
+  &-secondary {
+    border-radius: 0;
+    background-color: $text-grey4;
+    border: 1px solid $btn-border;
+    color: $text-grey3;
+  }
+
+  &-outline-secondary {
+    border: 1px solid $line-bright;
+    color: $text-grey2;
+  }
+}
+
+/*------------------------------------------------------------------*/
+/*  datepicker
+/*------------------------------------------------------------------*/
+.dp {
+  // input
+  &__main {
+    .dp__input_wrap {
+      input {
+        width: 160px;
+        border-radius: 0;
+        border: 1px solid $line-bright;
+        font-family: "Pretendard-Regular";
+        &:hover,
+        &:focus {
+          border: 1px solid $line-bright;
+        }
+        &.dp__input_focus {
+          border: 1px solid $line-bright;
+        }
+      }
+    }
+  }
+  &__arrow_top {
+    display: none;
+  }
+  // calendar
+  &__menu {
+    padding: 20px 19px;
+    box-sizing: content-box;
+    .dp__month_year_row {
+      display: flex;
+      justify-content: space-between;
+      height: 24px;
+      margin-bottom: 13px;
+      .dp__month_year_select {
+        cursor: auto;
+        pointer-events: none;
+        color: $text-blue;
+        font-weight: 600;
+        &:hover {
+          background-color: #fff;
+        }
+        &:first-child {
+          text-align: right;
+        }
+      }
+      .dp__month_year_select:first-child {
+        justify-content: flex-end;
+      }
+    }
+    .dp__calendar_wrap {
+      width: 100%;
+      .dp__calendar_header {
+        width: 100%;
+        height: 30px;
+        line-height:30px;
+        .dp__calendar_header_item {
+          font-weight: 600;
+          font-size: 12px;
+          color:#9F9CA5;
+          border-bottom:1px solid #ccc;
+        }
+      }
+      .dp__calendar_header_separator {
+        display: none;
+      }
+      .dp__calendar {
+        width: 100%;
+        .dp__calendar_row {
+          height: 30px;
+          font-size: 14px;
+          .dp__calendar_item {
+            .dp__pointer {
+              border-radius: 100%;
+              border: none;
+              width: 40.14px;
+              height: 31.84px;
+              border-radius: 5px;
+              &.dp__active_date {
+                background-color: $btn-default;
+              }
+              &:hover {
+                background-color: #F5F5F5;
+                color: #000;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.dp__main {
+  &.disabled {
+    pointer-events: none;
+    input {
+      background-color: #ececec;
+      color: #6a6a6a;
+    }
+  }
+}
+
+/*------------------------------------------------------------------*/
+/*  custom
+/*------------------------------------------------------------------*/
+
+.text-hide {
+  text-indent: -9999px;
+}
+
+.fileUpload {
+  display: none;
+}
+
+span.invalid-text {
+  display: none;
+  // display: block;
+  width: 100%;
+  font-size: 14px;
+  color: red;
+}
+
+input,
+select,
+button {
+  &:disabled {
+    background-color: $text-grey4;
+    color: $text-grey3;
+    border: 1px solid $line-bright;
+  }
+}
+
+label.disabled {
+  color: $text-grey3;
+}
+
+input.error {
+  border:1px solid red;
+}
+
+.invalid{
+  .dp__input_wrap{
+    input{
+      border:1px solid red;
+      &:hover{
+        border:1px solid red;
+      }
+      &.dp__input_focus{
+        border:1px solid red;
+      }
+    }
+  }
+}
+
+input[type="radio"]:disabled{
+  + span{
+    background-color: #E5E6E7 !important;
+  }
+
+  &:checked{
+    + span{
+      background-color: #CCCCCC !important;
+    }
+  }
+}
+

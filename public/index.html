@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+  <!-- ✅ load jQuery ✅ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(".modal").on("show.bs.modal", function () {
+      setTimeout(function () {
+        $('.transferGrid').refresh();
+      }, 200);
+    });  
+
+    $(document).ready(function(){
+	        $(window).scroll(function(){
+	          var scroll = $(window).scrollTop();
+
+            if(scroll > 0){
+              $("#gnb h3").addClass('scroll-active');
+            }else{
+              $("#gnb h3").removeClass('scroll-active');
+            }
+          })
+        });
+  </script>
+
+<script>
+  $(".dx-link-cancel").click(function(){
+    console.log("11");
+    $(".dx-row").removeClass("dx-row-focused");
+    $(".dx-row").removeClass("dx-cell-focus-disabled");
+  });
+</script>
+</body>
+
+</html>

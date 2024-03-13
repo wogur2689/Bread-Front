@@ -1,14 +1,20 @@
-import { fileURLToPath, URL } from 'node:url'
+module.exports = {
+  /* outputDir: '../src/main/resources/static', */
+  outputDir: './app/dist',
+  devServer: {
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+    /* Dev */
+    // proxy: {
+    //   '^/': {
+    //     /// springboot랑 다른 포트 사용
+    //     target: 'http://localhost:8081',
+    //     changeOrigin: true
+    //   }
+    // }
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
-})
+    /* Pub */
+    proxy:  'http://localhost:8081'
+  },
+  transpileDependencies: true,
+  lintOnSave:false
+};

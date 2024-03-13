@@ -1,0 +1,78 @@
+.sort-main {
+  ul {
+    padding-left: 1.5rem;
+    &.sort-main-one {
+      padding-left: 0;
+    }
+
+    li {
+      list-style: none;
+      line-height: 30px;
+      font-size: 14px;
+    }
+
+    .depth {
+      width: 100%;
+      align-items: center;
+      cursor: default;
+      button {
+        float: left;
+        border:none;
+        background: transparent;
+        margin-top: 10px;
+        width: 12px;
+        height: 12px;
+        margin-right: 0.5rem;
+        cursor: default;
+        background-position: 100% 0%;
+        background-repeat: no-repeat;
+      }
+
+      &.open {
+        button{
+          margin-top: 9px;
+          //background-image: url("../img/group/group-open.png");
+          background-size: contain;
+          cursor: pointer;
+        }
+        ul{
+          display:block;
+        }
+      }
+
+      &.close {
+        button{
+          margin-top: 9px;
+          //background-image: url("../img/group/group-close.png");
+          background-size: contain;
+          cursor: pointer;
+        }
+
+        ul{
+          display:none;
+        }
+      }
+
+      &.nc{
+        button{
+          background-size: 80%;
+          //background-image: url("../img/group/group-not-child.png");
+        }
+      }
+
+      &:hover {
+        color: #4a80ff;
+      }
+
+      &:focus,
+      &.active {
+        color: #4a80ff;
+        font-weight: 600;
+      }
+
+      &.not-active{
+        font-weight:400;
+      }
+    }
+  }
+}
