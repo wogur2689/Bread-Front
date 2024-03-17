@@ -28,7 +28,6 @@ import "@/assets/scss/style.scss";
 const app = createApp(App);
 /// 전역변수
 app.config.globalProperties.$axios = axios;
-app.config.globalProperties.adm = {};
 app.use(router);
 app.use(BootstrapVue3);
 app.mount("#app");

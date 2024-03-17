@@ -245,7 +245,7 @@
 
 .loading {
   border: 3px solid transparent;
-  border-color: transparent #004894 transparent #004894;
+  border-color: transparent #2aff22 transparent #2aff22;
   -moz-animation: rotate-loading 1.5s linear 0s infinite normal;
   -moz-transform-origin: 50% 50%;
   -o-animation: rotate-loading 1.5s linear 0s infinite normal;
@@ -257,7 +257,7 @@
 }
 
 .loading-container:hover .loading {
-  border-color: transparent #004894 transparent #004894;
+  border-color: transparent #2aff22 transparent #2aff22;
 }
 .loading-container:hover .loading,
 .loading-container .loading {
@@ -269,7 +269,7 @@
 }
 
 #loading-text {
-  color: #004894;
+  color: #2aff22;
   opacity: 1;
   position: absolute;
   text-transform: uppercase;
@@ -284,7 +284,9 @@
   margin: 0 auto;
   left: 0;
   right: 0;
-  bottom: 50.5%;
-  top: 49.5%;
+  bottom: 52%;
+  top: 48%;
   text-align: center;
+  width: 50px;
+  height: 50px;
 }
