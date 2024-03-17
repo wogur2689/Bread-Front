@@ -4,9 +4,9 @@ const routes = [
   {
     /// 화면에 표시되는 url
     path: "/",
-    name: "Login",
+    name: "main",
     /// 컴포넌트 호출 시 아래와 같이 호출해야 각 페이지마다 호출이기 때문에 로딩 속도가 빠름
-    component: () => import("@/components/layout/LoginLayout"),
+    component: () => import("@/components/layout/MainLayout"),
   },
   // {
   //   path: "/main",
