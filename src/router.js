@@ -1,19 +1,28 @@
 import { createWebHistory, createRouter } from "vue-router";
 
+import MainLayout from "@/components/layout/MainLayout";
+
 const routes = [
   {
     /// 화면에 표시되는 url
     path: "/",
     name: "Main",
+    component: MainLayout,
     /// 컴포넌트 호출 시 아래와 같이 호출해야 각 페이지마다 호출이기 때문에 로딩 속도가 빠름
-    component: () => import("@/components/layout/MainLayout")
+  },
+  {
+    /// 화면에 표시되는 url
+    path: "/login",
+    name: "login",
+    /// 컴포넌트 호출 시 아래와 같이 호출해야 각 페이지마다 호출이기 때문에 로딩 속도가 빠름
+    component: () => import("@/components/layout/LoginLayout")
   },
   // {
-  //   path: "/main",
-  //   name: "Main",
+  //   path: "/Products",
+  //   name: "Product",
   //   component: MainLayout,
   //   childeren: [
-  //     { path: "", redirect: "/main/dashboard" },
+  //     { path: "", redirect: "/product/dashboard" },
   //     {
   //       path: "dashboard",
   //       component: () => import("@/components/layout/DashboardLayout"),

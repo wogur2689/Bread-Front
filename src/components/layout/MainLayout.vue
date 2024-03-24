@@ -15,7 +15,7 @@
     </footer>
   </div>
 </template>
-
+ 
 <script>
 /// 호출할 컴포넌트 선언
 import loading from '@/components/layout/LoadingWrapper';
@@ -46,11 +46,11 @@ export default {
       /* Pub */
       let testData = [{
         "mnSn": 1,
-        "mnUrl": "/recruit",
+        "mnUrl": "/login",
         "mnStep": 1,
         "mnParentSn": null,
         "mnOrd": 1,
-        "mnNm": "상품",
+        "mnNm": "로그인",
         "mnUseSt": "USE",
         "mnInsId": "DB",
         "mnInsDt": "2022-10-03T12:36:56.673+00:00",
@@ -64,7 +64,7 @@ export default {
         "mnStep": 1,
         "mnParentSn": null,
         "mnOrd": 2,
-        "mnNm": "장바구니",
+        "mnNm": "상품",
         "mnUseSt": "USE",
         "mnInsId": "DB",
         "mnInsDt": "2022-10-03T12:36:56.673+00:00",
@@ -74,11 +74,25 @@ export default {
         "subMenus": null
       }, {
         "mnSn": 3,
-        "mnUrl": "/group",
+        "mnUrl": "/event",
         "mnStep": 1,
         "mnParentSn": null,
         "mnOrd": 3,
         "mnNm": "이벤트",
+        "mnUseSt": "USE",
+        "mnInsId": "DB",
+        "mnInsDt": "2022-10-03T12:36:56.673+00:00",
+        "mnUpdId": null,
+        "mnUpdDt": null,
+        "selFlg": false,
+        "subMenus": null
+      }, {
+        "mnSn": 4,
+        "mnUrl": "/map",
+        "mnStep": 1,
+        "mnParentSn": null,
+        "mnOrd": 4,
+        "mnNm": "매장 정보",
         "mnUseSt": "USE",
         "mnInsId": "DB",
         "mnInsDt": "2022-10-03T12:36:56.673+00:00",
