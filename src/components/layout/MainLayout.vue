@@ -3,10 +3,8 @@
     <!-- /// 로딩 -->
     <loading :show-flg="showFlg"></loading>
     <!-- /// GNB -->
-    <gnb-frame v-if="confirm.gnb" :menu-list="menuList" v-on:change-lnb="changeLnb"></gnb-frame>
-    <!-- /// LNB -->
+    <gnb-frame v-if="confirm.gnb" :menu-list="menuList" v-on:change-gnb="changeGnb" v-on:loading="loading"></gnb-frame>
     <section id="viewBox">
-      <lnb-frame v-if="confirm.lnb" :menu-list="menuList" :sel-gnb="selGnb" v-on:change-lnb="changeLnb" v-on:loading="loading"></lnb-frame>
       <!-- /// 링크에 따라 변경되는 CONTENT -->
       <router-view class="content-wrap"></router-view>
     </section>
@@ -20,18 +18,16 @@
 /// 호출할 컴포넌트 선언
 import loading from '@/components/layout/LoadingWrapper';
 import gnbFrame from '@/components/layout/GnbFrame';
-import lnbFrame from '@/components/layout/LnbFrame';
 import _ from "lodash";
 
 export default {
   /// 위에서 선언한 컴포넌트
-  components: { loading, gnbFrame, lnbFrame },
+  components: { loading, gnbFrame},
   data() {
     return {
       showFlg: true,
       confirm: {
-        gnb: false,
-        lnb: false
+        gnb: false
       },
       menuList: []
     }
@@ -60,7 +56,7 @@ export default {
         "subMenus": null
       }, {
         "mnSn": 2,
-        "mnUrl": "/hr",
+        "mnUrl": "/product",
         "mnStep": 1,
         "mnParentSn": null,
         "mnOrd": 2,
@@ -143,9 +139,7 @@ export default {
       // }
     },
     /// GNB
-    // changeLnb: function(list, val) {
-    changeLnb: function(list) {
-      this.confirm.lnb = false;
+    changeGnb: function(list) {
       this.menuList = list;
 
       // let mnSn = 0;
@@ -155,28 +149,13 @@ export default {
       _.forEach(this.menuList, function(o) {
         if (o.mnUrl == '/' + winPath[1]) {
           /// ${step1}과 같은 GNB 색 변경
-          // mnSn = o.mnSn;
           o.selFlg = true;
-          if (winPath.length > 2) {
-            /// url이 /${step1}/${step2}일 경우 ${step2}와 LNB url 매칭
-            _.forEach(o.subMenus, function(o2) {
-              if (o2.mnUrl == '/' + winPath[2]) {
-                /// ${step2}과 같은 LNB 색 변경
-                o2.selFlg = true;
-              } else {
-                o2.selFlg = false;
-              }
-            });
-          }
         } else {
           o.selFlg = false;
-          _.forEach(o.subMenus, function(o2) {
-            o2.selFlg = false;
-          });
         }
       });
 
-      this.confirm.lnb = true;
+      this.confirm.gnb = true;
     },
 
     loading: function(flg) {

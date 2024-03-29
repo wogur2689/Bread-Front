@@ -17,18 +17,18 @@ const routes = [
     /// 컴포넌트 호출 시 아래와 같이 호출해야 각 페이지마다 호출이기 때문에 로딩 속도가 빠름
     component: () => import("@/components/layout/LoginLayout")
   },
-  // {
-  //   path: "/Products",
-  //   name: "Product",
-  //   component: MainLayout,
-  //   childeren: [
-  //     { path: "", redirect: "/product/dashboard" },
-  //     {
-  //       path: "dashboard",
-  //       component: () => import("@/components/layout/DashboardLayout"),
-  //     },
-  //   ],
-  // },
+  {
+    path: "/Product",
+    name: "Product",
+    component: MainLayout,
+    childeren: [
+      { path: "", redirect: "/product" },
+      {
+        path: "dashboard",
+        component: () => import("@/components/layout/DashboardLayout"),
+      },
+    ],
+  },
   // {
   //   path: "/recruit",
   //   name: "MainRecruit",
