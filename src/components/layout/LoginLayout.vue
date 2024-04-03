@@ -2,7 +2,6 @@
     <div class="login-bg">
       <div class="login-wrap">
         <div>
-          <!-- /// 이미지(+svg) 테스트 -->
           <div class="text-center">
             <p class="login-info"><span>hyeok's bakery!</span></p>
             <p>로그인 후 이용하실 수 있습니다.</p>
