@@ -25,6 +25,7 @@
             </div>
           </form>
           <button type="button" class="btn login-btn" v-on:click="login">로그인</button>
+          <button type="button" class="btn login-btn" v-on:click="moveSignUp">회원가입</button>
           
           <div class="login-check">
             <input type="checkbox" id="id-save">
@@ -98,6 +99,9 @@
         } catch (error) {
           console.log('error: ' + error);
         }
+      },
+      moveSignUp() {
+        this.$router.push('/signUp');
       }
     }
   };

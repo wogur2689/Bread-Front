@@ -507,6 +507,73 @@ footer{
     }
   }
 }
+/*---------------------------------------------------*/
+/*  03-1) signUp
+/*---------------------------------------------------*/
+#signUp {
+  width: 100%;
+  height: 1136px;
+  background: $base-color;
+  position: relative;
+}
+#signUp h1 {
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+#signUp hr {
+  margin-bottom: 30px;
+}
+#signUp .member_box {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  margin: -30% 0 0 -30%;
+  width: 600px;
+  height: 720px;
+  background: white;
+  border: 2px solid black;
+  box-shadow: 0px 0px 15px black;
+}
+#signUp .member_box .hint {
+    width: 220px;
+    float: left;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 50px;
+}
+#signUp .member_box .su {
+    clear: both;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+#signUp input {
+  width: 270px;
+  height: 40px;
+  margin-bottom: 50px;
+  border: 0px;
+  border-bottom: solid 1px black;
+  font-size: 20px;
+  font-weight: 700;
+  float: left;
+}
+#signUp input[type="submit"] {
+    width: 400px;
+    height: 50px;
+    border: 0px;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    background:lightblue;
+    cursor: pointer;
+}
+#signUp input[type="submit"]:hover {
+    background-color:skyblue;
+}
 
 /*---------------------------------------------------*/
 /*  04) BODY(common)
