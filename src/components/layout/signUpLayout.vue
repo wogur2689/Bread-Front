@@ -26,7 +26,10 @@
       return {
         usr: {
           id: '',
-          pwd: ''
+          name: '',
+          pwd: '',
+          phone: '',
+          address: ''
         }
       }
     },
@@ -34,7 +37,10 @@
       /// 변수 초기화
       this.usr = {
         id: '',
-        pwd: ''
+        name: '',
+        pwd: '',
+        phone: '',
+        address: ''
       };
     },
     mounted() {
@@ -42,22 +48,32 @@
       //this.$refs.txtId.focus();
     },
     methods: {
+      isErrTxt(errTxt) {
+        if (errTxt != '') {
+            alert(errTxt);
+            return true;
+        }
+        return false;
+      },
       async signUp() {
         try {
           /// 아이디 빈칸 & 비밀번호 빈칸 체크
           let errTxt = vd.idMatch(this.usr.id);
-          if (errTxt != '') {
-            //this.$refs.txtId.focus();
-            alert(errTxt);
-            return;
-          }
+          if (this.isErrTxt(errTxt)) return;
+          
           errTxt = vd.pwdMatch(this.usr.pwd);
-          if (errTxt != '') {
-            //this.$refs.txtPwd.focus();
-            alert(errTxt);
-            return;
-          }
-  
+          if (this.isErrTxt(errTxt)) return;
+
+          errTxt = vd.pwdMatch(this.usr.name);
+          if (this.isErrTxt(errTxt)) return;
+          
+          errTxt = vd.pwdMatch(this.usr.phone);
+          if (this.isErrTxt(errTxt)) return;
+          
+          errTxt = vd.pwdMatch(this.usr.address);
+          if (this.isErrTxt(errTxt)) return;
+
+
           /* Pub */
           this.$router.push('/');
   
