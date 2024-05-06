@@ -25,5 +25,5 @@ npm run serve
 ### Compile and Minify for Production
 
 ```sh
-npm run serve
+npm run build
 ```
