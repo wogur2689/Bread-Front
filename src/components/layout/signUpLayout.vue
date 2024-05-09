@@ -4,11 +4,11 @@
             <h1>회원가입</h1>
             <hr>
             <form method="post" action="#">
-                <div class="hint">아이디 :</div><input type="text" class="id" placeholder="아이디"/>
-                <div class="hint">이름 :</div><input type="text" class="name" placeholder="이름"/>
-                <div class="hint">비밀번호 :</div><input type="password" class="pw" placeholder="비밀번호"/>
-                <div class="hint">핸드폰번호 :</div><input type="text" class="phone" placeholder="ex)010-0000-0000"/>
-                <div class="hint">주소 :</div><input type="text" class="address" placeholder="주소"/>
+                <div class="hint">아이디 :</div><input type="text" ref="id" v-model.trim="usr.id" placeholder="아이디"/>
+                <div class="hint">이름 :</div><input type="text" ref="name" v-model.trim="usr.name" placeholder="이름"/>
+                <div class="hint">비밀번호 :</div><input type="password" ref="pwd" v-model.trim="usr.pwd" placeholder="비밀번호"/>
+                <div class="hint">핸드폰번호 :</div><input type="text" ref="phone" v-model.trim="usr.phone" placeholder="ex)010-0000-0000"/>
+                <div class="hint">주소 :</div><input type="text" ref="address" v-model.trim="usr.address" placeholder="주소"/>
                 <div class="su">
                     <button type="submit" class="btn" v-on:click="signUp">회원가입</button>
                 </div>
@@ -45,7 +45,7 @@
     },
     mounted() {
       /// 아이디 포커싱
-      //this.$refs.txtId.focus();
+      this.$refs.id.focus();
     },
     methods: {
       isErrTxt(errTxt) {
@@ -73,22 +73,21 @@
           errTxt = vd.pwdMatch(this.usr.address);
           if (this.isErrTxt(errTxt)) return;
 
-
-          /* Pub */
-          this.$router.push('/');
-  
-          /* Dev */
-          // const res = await this.$axios.post('/api/login', this.admLogin);
-          // if (res.data.code == '0000') {
-          //   /// 정상일 경우 홈으로 이동
-          //   this.adm = res.data.rData;
-          //   this.$router.push('/main');
-          // } else {
-          //   /// 그 외
-          //   this.$refs.txtId.focus();
-          //   alert(res.data.rMsg);
-          //   return;
-          // }
+          // Pub
+          //this.$router.push('/');
+          
+          const res = await this.$axios.post('/api/login', this.usr);
+          console.log(res.json());
+          if (res.data.code == '0000') {
+          /// 정상일 경우 홈으로 이동
+          this.usr = res.data.info;
+          this.$router.push('/main');
+          } else {
+          /// 그 외
+            this.$refs.id.focus();
+            alert(res.data.msg);
+            return;
+          }
           
         } catch (error) {
           console.log('error: ' + error);
