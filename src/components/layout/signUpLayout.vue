@@ -4,7 +4,7 @@
             <h1>회원가입</h1>
             <hr>
             <form method="post" action="#">
-                <div class="hint">아이디 :</div><input type="text" ref="id" v-model.trim="usr.id" placeholder="아이디"/>
+                <div class="hint">아이디 :</div><input type="text" ref="userId" v-model.trim="usr.userId" placeholder="아이디"/>
                 <div class="hint">이름 :</div><input type="text" ref="name" v-model.trim="usr.name" placeholder="이름"/>
                 <div class="hint">비밀번호 :</div><input type="password" ref="pwd" v-model.trim="usr.pwd" placeholder="비밀번호"/>
                 <div class="hint">핸드폰번호 :</div><input type="text" ref="phone" v-model.trim="usr.phone" placeholder="ex)010-0000-0000"/>
@@ -25,7 +25,7 @@
     data() {
       return {
         usr: {
-          id: '',
+          userId: '',
           name: '',
           pwd: '',
           phone: '',
@@ -36,7 +36,7 @@
     created() {
       /// 변수 초기화
       this.usr = {
-        id: '',
+        userId: '',
         name: '',
         pwd: '',
         phone: '',
@@ -45,7 +45,7 @@
     },
     mounted() {
       /// 아이디 포커싱
-      this.$refs.id.focus();
+      this.$refs.userId.focus();
     },
     methods: {
       isErrTxt(errTxt) {
@@ -58,7 +58,7 @@
       async signUp() {
         try {
           /// 아이디 빈칸 & 비밀번호 빈칸 체크
-          let errTxt = vd.idMatch(this.usr.id);
+          let errTxt = vd.idMatch(this.usr.userId);
           if (this.isErrTxt(errTxt)) return;
           
           errTxt = vd.pwdMatch(this.usr.pwd);
