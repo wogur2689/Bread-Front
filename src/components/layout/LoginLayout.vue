@@ -82,15 +82,14 @@
   
           /* Pub */
           //this.$router.push('/');
-          const res = await this.$axios.post('http://localhost:3000/user/login', this.admLogin);
+          const res = await this.$axios.post('http://localhost:3000/user/login', this.usr);
           if (res.data.code == '0000') {
             /// 정상일 경우 홈으로 이동
-            this.adm = res.data.rData;
-            this.$router.push('/main');
+            this.$router.push('/');
           } else {
             /// 그 외
             this.$refs.txtId.focus();
-            alert(res.data.rMsg);
+            alert(res.data.msg);
             return;
           }
           
