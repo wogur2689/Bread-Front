@@ -85,10 +85,9 @@
           const res = await this.$axios.post('http://localhost:3000/user/signUp', this.usr);
           console.log(res.json());
           if (res.data.code == '0000') {
-          /// 정상일 경우 홈으로 이동
+          /// 정상일 경우 로그인으로 이동
           this.usr = res.data.info;
-          console.log(res.json());
-          //this.$router.push('/');
+          this.$router.push('/login');
           } else {
           /// 그 외
             this.$refs.id.focus();

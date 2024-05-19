@@ -82,7 +82,7 @@
   
           /* Pub */
           //this.$router.push('/');
-          const res = await this.$axios.post('http://localhost:3000/login', this.admLogin);
+          const res = await this.$axios.post('http://localhost:3000/user/login', this.admLogin);
           if (res.data.code == '0000') {
             /// 정상일 경우 홈으로 이동
             this.adm = res.data.rData;
