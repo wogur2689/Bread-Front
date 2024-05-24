@@ -83,7 +83,6 @@
           //this.$router.push('/');
           
           const res = await this.$axios.post('http://localhost:3000/signUp', this.usr);
-          console.log(res.json());
           if (res.data.code == '0000') {
           /// 정상일 경우 로그인으로 이동
           this.usr = res.data.info;
