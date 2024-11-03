@@ -1,7 +1,4 @@
 <template>
-  <!-- /// v-if 사용 시 transition을 통해 fade 기능 사용 가능
-    /// name은 common.css의 설명 참고
-  -->
   <Transition name="loading">
     <div v-if="showFlg" class="loading-wrap">
       <div class="preloader">

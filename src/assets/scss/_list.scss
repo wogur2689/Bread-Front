@@ -31,7 +31,6 @@
       &.open {
         button{
           margin-top: 9px;
-          //background-image: url("../img/group/group-open.png");
           background-size: contain;
           cursor: pointer;
         }
@@ -43,7 +42,6 @@
       &.close {
         button{
           margin-top: 9px;
-          //background-image: url("../img/group/group-close.png");
           background-size: contain;
           cursor: pointer;
         }
@@ -56,7 +54,6 @@
       &.nc{
         button{
           background-size: 80%;
-          //background-image: url("../img/group/group-not-child.png");
         }
       }
 
