@@ -13,7 +13,7 @@
               <label>아이디</label>
               <!-- /// focus해야 할 경우 ref 사용 -->
               <i class="i-id"></i>
-              <input type="text" ref="txtId" class="form-control mt5" v-model.trim="usr.id" placeholder="아이디"
+              <input type="text" ref="txtId" class="form-control mt5" v-model.trim="usr.userId" placeholder="아이디"
                 v-on:keyup.enter="login" />
             </div>
             <div class="form-group mt10">
@@ -47,7 +47,7 @@
     data() {
       return {
         usr: {
-          id: '',
+          userId: '',
           pwd: ''
         }
       }
@@ -55,7 +55,7 @@
     created() {
       /// 변수 초기화
       this.usr = {
-        id: '',
+        userId: '',
         pwd: ''
       };
     },
@@ -67,7 +67,7 @@
       async login() {
         try {
           /// 아이디 빈칸 & 비밀번호 빈칸 체크
-          let errTxt = vd.idMatch(this.usr.id);
+          let errTxt = vd.idMatch(this.usr.userId);
           if (errTxt != '') {
             this.$refs.txtId.focus();
             alert(errTxt);
@@ -82,7 +82,8 @@
   
           /* Pub */
           //this.$router.push('/');
-          const res = await this.$axios.post('http://localhost:3000/user/login', this.usr);
+          const res = await this.$axios.post('http://localhost:3000/login', this.usr);
+          console.log(res);
           if (res.data.code == '0000') {
             /// 정상일 경우 홈으로 이동
             this.$router.push('/');
