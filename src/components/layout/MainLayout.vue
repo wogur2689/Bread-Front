@@ -42,80 +42,22 @@ export default {
       /* Pub */
       let testData = [{
         "mnSn": 1,
-        "mnUrl": "/login",
         "mnStep": 1,
-        "mnParentSn": null,
-        "mnOrd": 1,
-        "mnNm": "로그인",
-        "mnUseSt": "USE",
-        "mnInsId": "DB",
-        "mnInsDt": "2022-10-03T12:36:56.673+00:00",
-        "mnUpdId": null,
-        "mnUpdDt": null,
-        "selFlg": false,
-        "subMenus": null
+        "mnUrl": "/login",
+        "mnNm": "login",
       }, {
         "mnSn": 2,
-        "mnUrl": "/product",
         "mnStep": 1,
-        "mnParentSn": null,
-        "mnOrd": 2,
-        "mnNm": "상품",
-        "mnUseSt": "USE",
-        "mnInsId": "DB",
-        "mnInsDt": "2022-10-03T12:36:56.673+00:00",
-        "mnUpdId": null,
-        "mnUpdDt": null,
-        "selFlg": false,
-        "subMenus": null
+        "mnUrl": "/market",
+        "mnNm": "market",
       }, {
         "mnSn": 3,
-        "mnUrl": "/event",
         "mnStep": 1,
-        "mnParentSn": null,
-        "mnOrd": 3,
-        "mnNm": "이벤트",
-        "mnUseSt": "USE",
-        "mnInsId": "DB",
-        "mnInsDt": "2022-10-03T12:36:56.673+00:00",
-        "mnUpdId": null,
-        "mnUpdDt": null,
-        "selFlg": false,
-        "subMenus": null
-      }, {
-        "mnSn": 4,
-        "mnUrl": "/map",
-        "mnStep": 1,
-        "mnParentSn": null,
-        "mnOrd": 4,
-        "mnNm": "매장 정보",
-        "mnUseSt": "USE",
-        "mnInsId": "DB",
-        "mnInsDt": "2022-10-03T12:36:56.673+00:00",
-        "mnUpdId": null,
-        "mnUpdDt": null,
-        "selFlg": false,
-        "subMenus": null
-      }, {
-        "mnSn": 11,
-        "mnUrl": "/ability",
-        "mnStep": 2,
-        "mnParentSn": 2,
-        "mnOrd": 4,
-        "mnNm": "역량관리",
-        "mnUseSt": "USE",
-        "mnInsId": "DB",
-        "mnInsDt": "2022-10-03T12:48:23.493+00:00",
-        "mnUpdId": null,
-        "mnUpdDt": null,
-        "selFlg": false,
-        "subMenus": null
+        "mnUrl": "/talk",
+        "mnNm": "talk",
       }];
       this.menuList = _.filter(testData, { mnStep: 1 });
-      _.forEach(this.menuList, function(o) {
-        o.subMenus = _.filter(testData, { mnParentSn: o.mnSn });
-      });
-      this.confirm.gnb = true;
+      this.confirm.gnb = true;  
 
       /* Dev */
         //try {
@@ -141,14 +83,11 @@ export default {
     /// GNB
     changeGnb: function(list) {
       this.menuList = list;
-
-      // let mnSn = 0;
-      /// 경로에서 /${step1}/${step2}로 구분
       let winPath = window.location.pathname.split('/');
       /// GNB정보
       _.forEach(this.menuList, function(o) {
         if (o.mnUrl == '/' + winPath[1]) {
-          /// ${step1}과 같은 GNB 색 변경
+          ///GNB 색 변경
           o.selFlg = true;
         } else {
           o.selFlg = false;
