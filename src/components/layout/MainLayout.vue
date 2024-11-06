@@ -1,11 +1,10 @@
 <template>
   <div>
-    <!-- /// 로딩 -->
+    <!-- 로딩 -->
     <loading :show-flg="showFlg"></loading>
-    <!-- /// GNB -->
+    <!-- GNB -->
     <gnb-frame v-if="confirm.gnb" :menu-list="menuList" v-on:change-gnb="changeGnb" v-on:loading="loading"></gnb-frame>
     <section id="viewBox">
-      <!-- /// 링크에 따라 변경되는 CONTENT -->
       <router-view class="content-wrap"></router-view>
     </section>
     <footer>
@@ -13,7 +12,7 @@
     </footer>
   </div>
 </template>
- 
+
 <script>
 /// 호출할 컴포넌트 선언
 import loading from '@/components/layout/LoadingWrapper';
@@ -43,15 +42,20 @@ export default {
       let testData = [{
         "mnSn": 1,
         "mnStep": 1,
+        "mnUrl": "/home",
+        "mnNm": "home",
+      }, {
+        "mnSn": 2,
+        "mnStep": 1,
         "mnUrl": "/login",
         "mnNm": "login",
       }, {
-        "mnSn": 2,
+        "mnSn": 3,
         "mnStep": 1,
         "mnUrl": "/market",
         "mnNm": "market",
       }, {
-        "mnSn": 3,
+        "mnSn": 4,
         "mnStep": 1,
         "mnUrl": "/talk",
         "mnNm": "talk",

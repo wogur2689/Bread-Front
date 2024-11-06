@@ -9,6 +9,11 @@ const routes = [
     component: MainLayout,
   },
   {
+    path: "/home",
+    name: "home",
+    component: () => import("@/components/layout/HomeLayout")
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("@/components/layout/LoginLayout")
