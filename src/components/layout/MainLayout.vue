@@ -65,13 +65,10 @@ export default {
 
       /* Dev */
         //try {
-        // const res = await this.$axios.post('/menu/list');
+        // const res = await this.$axios.post('/api/menu');
         // if (res.data.rCode == '0000') {
         //   /// 정상일 경우 메뉴 표시
         //   this.menuList = _.filter(res.data.rData, { mnStep: 1 });
-        //   _.forEach(this.menuList, function(o) {
-        //     o.subMenus = _.filter(res.data.rData, { mnParentSn: o.mnSn });
-        //   });
         //   this.confirm.gnb = true;
         // } else {
         //   /// 그 외
