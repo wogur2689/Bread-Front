@@ -15,14 +15,10 @@ axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded;charset=UTF-8";
 axios.default.withCredentials = true; // 쿠키를 포함한 요청을 전송
 
-
 /// bootstrap
 import BootstrapVue3 from "bootstrap-vue-3";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap";
-
-//jquery
-// import $ from "jquery";
 
 /// 공용 css
 import "@/assets/scss/style.scss";
