@@ -51,6 +51,7 @@
       this.$refs.userId.focus();
     },
     methods: {
+      // error message alert
       isErrTxt(errTxt) {
         if (errTxt != '') {
             alert(errTxt);
@@ -58,6 +59,8 @@
         }
         return false;
       },
+
+      // 회원가입
       async signUp() {
         try {
           /// 아이디 빈칸 & 비밀번호 빈칸 체크
