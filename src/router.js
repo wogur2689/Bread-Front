@@ -11,7 +11,7 @@ const routes = [
   {
     path: "/home",
     name: "home",
-    component: () => import("@/components/layout/HomeLayout")
+    component: () => import("@/components/layout/MainLayout")
   },
   {
     path: "/login",
@@ -46,6 +46,15 @@ const routes = [
         component: () => import("@/components/layout/DashboardLayout"),
       },
     ],
+  },
+  {
+    path: "/myPage",
+    name: "MyPage",
+    component: MainLayout,  
+    children: [
+      { path: "", redirect: "/mypage/profile" }, // 기본 리다이렉트 설정
+      { path: "profile", component: () => import("@/components/user/MyPage") }
+    ]
   },
   {
     /// 404 에러

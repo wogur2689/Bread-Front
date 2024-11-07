@@ -59,9 +59,14 @@ export default {
         "mnStep": 1,
         "mnUrl": "/talk",
         "mnNm": "talk",
+      }, {
+        "mnSn": 5,
+        "mnStep": 1,
+        "mnUrl": "/myPage",
+        "mnNm": "myPage",
       }];
       this.menuList = _.filter(testData, { mnStep: 1 });
-      this.confirm.gnb = true;  
+      this.confirm.gnb = true;
 
       /* Dev */
         //try {
@@ -101,6 +106,10 @@ export default {
     loading: function(flg) {
       this.showFlg = flg;
     },
+
+    moveMypage() {
+        this.$router.push('/mypage');
+    }
   }
 };
 </script>
