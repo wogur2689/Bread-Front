@@ -19,7 +19,7 @@
 </template>
   
 <script>
-  /// 페이지별 js 정규화 검증
+  // js 정규화 검증
   import vd from '@/js/validataion';
   
   export default {
