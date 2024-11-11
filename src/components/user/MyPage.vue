@@ -4,12 +4,12 @@
             <h1>마이페이지</h1>
             <hr>
             <form method="post">
-                <div class="hint">아이디 :</div><input type="text" ref="userId" placeholder="아이디" v-bind:value="usr.userId" />
-                <div class="hint">이름 :</div><input type="text" ref="name" placeholder="이름" v-bind:value="usr.name"/>
-                <div class="hint">비밀번호 :</div><input type="password" ref="pwd" placeholder="비밀번호" v-bind:value="usr.pwd"/>
-                <div class="hint">나이 :</div><input type="text" ref="age" placeholder="나이" v-bind:value="usr.age"/>
-                <div class="hint">핸드폰번호 :</div><input type="text" ref="phone" placeholder="ex)010-0000-0000" v-bind:value="usr.phone"/>
-                <div class="hint">주소 :</div><input type="text" ref="address" placeholder="주소" v-bind:value="usr.address"/>
+                <div class="hint">아이디 :</div><input type="text" ref="userId" v-bind:value="usr.userId" />
+                <div class="hint">이름 :</div><input type="text" ref="name" v-bind:value="usr.name"/>
+                <div class="hint">비밀번호 :</div><input type="password" ref="pwd" v-bind:value="usr.pwd"/>
+                <div class="hint">나이 :</div><input type="text" ref="age" v-bind:value="usr.age"/>
+                <div class="hint">핸드폰번호 :</div><input type="text" ref="phone" v-bind:value="usr.phone"/>
+                <div class="hint">주소 :</div><input type="text" ref="address" v-bind:value="usr.address"/>
                 <div class="su">
                     <button type="button" class="btn" v-on:click="myPageUpdate">수정하기</button>
                 </div>
