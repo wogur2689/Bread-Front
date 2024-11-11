@@ -20,7 +20,7 @@
 
 <script>
 // js 정규화 검증
-import vd from '@/js/validataion';
+//import vd from '@/js/validataion';
 
 export default {
     data() {
@@ -47,7 +47,7 @@ export default {
     },
     mounted() {
         //페이지가 랜더링 된 후 API 호출
-        this.getMyPageData();
+        //this.getMyPageData();
     },
     methods: {
         // error message alert
@@ -73,20 +73,20 @@ export default {
         async myPageUpdate() {
             try {
             // 아이디 빈칸 & 비밀번호 빈칸 체크
-            errTxt = vd.pwdMatch(this.usr.pwd);
-            if (this.isErrTxt(errTxt)) return;
+            //errTxt = vd.pwdMatch(this.usr.pwd);
+            //if (this.isErrTxt(errTxt)) return;
 
-            errTxt = vd.pwdMatch(this.usr.age);
-            if (this.isErrTxt(errTxt)) return;
+            //errTxt = vd.pwdMatch(this.usr.age);
+            //if (this.isErrTxt(errTxt)) return;
 
-            errTxt = vd.pwdMatch(this.usr.name);
-            if (this.isErrTxt(errTxt)) return;
+            //errTxt = vd.pwdMatch(this.usr.name);
+            //if (this.isErrTxt(errTxt)) return;
             
-            errTxt = vd.pwdMatch(this.usr.phone);
-            if (this.isErrTxt(errTxt)) return;
+            //errTxt = vd.pwdMatch(this.usr.phone);
+            //if (this.isErrTxt(errTxt)) return;
             
-            errTxt = vd.pwdMatch(this.usr.address);
-            if (this.isErrTxt(errTxt)) return;
+            //errTxt = vd.pwdMatch(this.usr.address);
+            //if (this.isErrTxt(errTxt)) return;
             
             const res = await this.$axios.post('http://localhost:3000/api/myPageUpdate', this.usr);
             if (res.data.code == '0000') {
