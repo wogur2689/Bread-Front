@@ -47,7 +47,10 @@ export default {
     },
     mounted() {
         //페이지가 랜더링 된 후 API 호출
-        //this.getMyPageData();
+        //1. login check
+        this.isLogin();
+        //2. mypage data get
+        this.getMyPageData();
     },
     methods: {
         // error message alert
@@ -59,8 +62,25 @@ export default {
             return false;
         },
 
+        async isLogin() {
+            try {
+                const res = await this.$axios.get('http://localhost:3000/api/loginCheck', {
+                    credentials: 'include' // 쿠키 포함
+                });
+                if (res.status == 200) {
+                    console.log('User session:', res.data.user);
+                    return res.data.user;
+                } else {
+                    console.log('No active session');
+                    return null;
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        },
+
         async getMyPageData() {
-            const res = await this.$axios.post('http://localhost:3000/api/myPageUpdate', this.usr);
+            const res = await this.$axios.post('http://localhost:3000/api/getMypageData', this.usr);
             if (res.data.code == '0000') {
                 // 정상일 경우
                 this.usr = res.data.info;

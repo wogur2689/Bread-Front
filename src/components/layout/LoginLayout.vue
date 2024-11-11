@@ -82,8 +82,9 @@
   
           /* Pub */
           //this.$router.push('/');
-          const res = await this.$axios.post('http://localhost:3000/login', this.usr);
-          console.log(res);
+          const res = await this.$axios.post('http://localhost:3000/login', this.usr, {
+              withCredentials: true //쿠키도 함께 전송
+          });
           if (res.data.code == '0000') {
             /// 정상일 경우 홈으로 이동
             this.$router.push('/');
