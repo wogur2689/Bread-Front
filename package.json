@@ -8,30 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
     "@popperjs/core": "^2.11.6",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
     "@vuepic/vue-datepicker": "^3.5.0",
     "axios": "^0.27.2",
     "bootstrap": "^5.2.2",
     "bootstrap-vue-3": "^0.3.12",
-    "core-js": "^3.8.3",
-    "devextreme": "22.1.5",
-    "devextreme-vue": "22.1.5",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^9.23.0",
-    "express": "^4.18.1",
-    "file-saver-es": "^2.0.5",
     "lodash": "^4.17.21",
-    "sass": "^1.55.0",
-    "sass-loader": "^13.0.2",
-    "serve": "^14.0.1",
     "vue": "^3.2.40",
-    "vue-router": "^4.0.13",
-    "vue3-treeview": "^0.4.0"
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -39,7 +23,10 @@
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "sass": "^1.55.0",
+    "sass-loader": "^13.0.2"
   },
   "eslintConfig": {
     "root": true,
