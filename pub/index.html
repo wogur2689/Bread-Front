@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>베이커리 프로젝트</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.core.min.css" rel="stylesheet">    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/css/glide.theme.min.css" rel="stylesheet">
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet">    
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="font-['Noto_Sans_KR'] bg-[#FFF8DC]">
+    <header class="bg-custom shadow-sm fixed w-full z-50">
+        <nav class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">            
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="로고" class="h-8 w-auto">                    
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#" class="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">홈</a>
+                        <a href="#" class="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">메뉴</a>
+                        <a href="#" class="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">매장안내</a>
+                        <a href="#" class="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">주문하기</a>                        
+                        <a href="#" class="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">마이페이지</a>
+                    </div>                
+                </div>
+                <div class="flex items-center">
+                    <button class="text-white p-2 hover:text-gray-200">                        
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                    </button>
+                </div>
+            </div>        
+        </nav>
+    </header>
+
+    <main class="pt-16">
+        <div class="glide relative">
+            <div class="glide__track" data-glide-el="track">                
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="relative h-[600px]">                            
+                            <img src="./img/banner1.png" alt="빵 이미지" class="w-full h-full object-cover">                            
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                <div class="text-center text-white">                                    
+                                    <h2 class="text-4xl font-bold mb-4">신선한 수제 빵</h2>
+                                    <p class="text-xl mb-8">매일 아침 구워내는 건강한 빵</p>
+                                    <button class="!rounded-button bg-custom px-8 py-3 text-white font-medium hover:bg-opacity-90">지금 주문하기</button>
+                                </div>
+                            </div>
+                        </div>                    
+                    </li>
+                </ul>
+            </div>
+            <div class="glide__bullets" data-glide-el="controls[nav]">                
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+            </div>
+        </div>
+
+        <section class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-16 bg-[#F5DEB3]">            
+            <h2 class="text-3xl font-bold text-center mb-12">베스트셀러</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="./img/ButterCroissant.png" alt="크로와상" class="w-full h-48 object-cover">                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">버터 크로와상</h3>
+                        <p class="text-gray-600 mb-4">3,500원</p>
+                        <button class="!rounded-button w-full bg-custom text-white py-2 hover:bg-opacity-90">장바구니 담기</button>                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="./img/wholeWheatBread.png" alt="통밀빵" class="w-full h-48 object-cover">                 
+                        <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">통밀 식빵</h3>
+                        <p class="text-gray-600 mb-4">4,500원</p>
+                        <button class="!rounded-button w-full bg-custom text-white py-2 hover:bg-opacity-90">장바구니 담기</button>                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <img src="./img/fruitTart.png" alt="과일타르트" class="w-full h-48 object-cover">                    
+                    <div class="p-6">
+                        <h3 class="text-xl font-medium mb-2">과일 타르트</h3>
+                        <p class="text-gray-600 mb-4">5,500원</p>
+                        <button class="!rounded-button w-full bg-custom text-white py-2 hover:bg-opacity-90">장바구니 담기</button>                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#FFEFD5] py-16">            
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">카테고리</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                    <a href="#" class="text-center">                        
+                        <div class="bg-white rounded-full p-8 mb-4 mx-auto w-32 h-32 flex items-center justify-center shadow-md">                            <i class="fas fa-bread-slice text-4xl text-custom"></i>
+                        </div>
+                        <h3 class="font-medium">식빵</h3>
+                    </a>
+                    <a href="#" class="text-center">
+                        <div class="bg-white rounded-full p-8 mb-4 mx-auto w-32 h-32 flex items-center justify-center shadow-md">                            <i class="fas fa-cookie text-4xl text-custom"></i>
+                        </div>
+                        <h3 class="font-medium">페이스트리</h3>
+                    </a>
+                    <a href="#" class="text-center">
+                        <div class="bg-white rounded-full p-8 mb-4 mx-auto w-32 h-32 flex items-center justify-center shadow-md">                            <i class="fas fa-birthday-cake text-4xl text-custom"></i>
+                        </div>
+                        <h3 class="font-medium">케이크</h3>
+                    </a>
+                    <a href="#" class="text-center">
+                        <div class="bg-white rounded-full p-8 mb-4 mx-auto w-32 h-32 flex items-center justify-center shadow-md">                            <i class="fas fa-ice-cream text-4xl text-custom"></i>
+                        </div>
+                        <h3 class="font-medium">디저트</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#FFE4C4] py-16">            
+            <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center mb-12">매장 정보</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg p-8 text-center shadow-md">                        
+                        <i class="fas fa-clock text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-medium mb-4">빵 굽는 시간</h3>
+                        <p>매일 오전 6시</p>
+                        <p>오후 2시</p>
+                    </div>                    <div class="bg-white rounded-lg p-8 text-center shadow-md">
+                        <i class="fas fa-map-marker-alt text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-medium mb-4">위치</h3>
+                        <p>서울특별시 강남구</p>                        <p>베이커리로 123</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-8 text-center shadow-md">                        
+                        <i class="fas fa-store text-4xl text-custom mb-4"></i>
+                        <h3 class="text-xl font-medium mb-4">영업시간</h3>
+                        <p>매일 07:00 - 22:00</p>
+                        <p>연중무휴</p>
+                    </div>                
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#654321] text-white">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-12">            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-medium mb-4">회사 정보</h4>
+                    <p class="text-sm">베이커리 프로젝트</p>
+                    <p class="text-sm">사업자등록번호: 123-45-67890</p>                
+                </div>
+                <div>
+                    <h4 class="text-lg font-medium mb-4">고객센터</h4>
+                    <p class="text-sm">전화: 02-1234-5678</p>
+                    <p class="text-sm">이메일: info@bakery.com</p>
+                </div>
+                <div>                    
+                    <h4 class="text-lg font-medium mb-4">SNS</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-gray-300">                            
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-300">                            
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-white hover:text-gray-300">                            
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>                
+                <div>
+                    <h4 class="text-lg font-medium mb-4">이용약관</h4>
+                    <ul class="text-sm space-y-2">                        
+                        <li><a href="#" class="hover:text-gray-300">이용약관</a></li>
+                        <li><a href="#" class="hover:text-gray-300">개인정보처리방침</a></li>
+                        <li><a href="#" class="hover:text-gray-300">청소년보호정책</a></li>                    
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-600 mt-8 pt-8 text-center text-sm">                
+                <p>&copy; 2024 베이커리 프로젝트. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.6.0/glide.min.js"></script>
+    <script>
+        new Glide('.glide', {
+            type: 'carousel',
+            startAt: 0,
+            perView: 1,
+            autoplay: 5000
+        }).mount();
+    </script></body>
+</html>
