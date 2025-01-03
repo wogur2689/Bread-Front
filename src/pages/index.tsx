@@ -9,5 +9,10 @@ export default function index() {
             <h2 className="text-3xl font-bold text-center mb-12">베스트셀러</h2>
             <Card></Card>
         </section>
+        <section className="bg-[#FFEFD5] py-16">            
+            <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-3xl font-bold text-center mb-12">카테고리</h2>
+            </div>
+        </section>
     </>
 }
