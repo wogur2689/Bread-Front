@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        custom: '#000000', // 검은색 (Black)
       },
     },
   },
