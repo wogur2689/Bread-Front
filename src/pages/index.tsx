@@ -1,5 +1,6 @@
 import Banner from '@/components/main/Banner';
 import Card from '@/components/main/Card';
+import Category from '@/components/main/Category';
 
 
 export default function index() {
@@ -12,6 +13,7 @@ export default function index() {
         <section className="bg-[#FFEFD5] py-16">            
             <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 className="text-3xl font-bold text-center mb-12">카테고리</h2>
+                <Category></Category>
             </div>
         </section>
     </>

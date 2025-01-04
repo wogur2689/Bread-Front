@@ -19,7 +19,7 @@ const data = [
     }
 ];
 
-export default function Card() {
+export default function Category() {
     return (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
             {data.map((icon, index) => (
