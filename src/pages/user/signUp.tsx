@@ -74,7 +74,7 @@ export default function signUp() {
                     </button>
                 </div>
 
-                <div className="mt-6">
+                {/* <div className="mt-6">
                     <div className="relative">                        
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-gray-300"></div>
@@ -93,7 +93,7 @@ export default function signUp() {
                         <button type="button" className="!rounded-button w-full inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">                            <i className="fab fa-google text-gray-700"></i>
                         </button>
                     </div>                
-                </div>
+                </div> */}
             </form>
 
             <p className="mt-2 text-center text-sm text-gray-600">

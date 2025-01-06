@@ -55,14 +55,14 @@ export default function login() {
                             </div>
                         </div>
 
-                        <div className="mt-6 grid grid-cols-3 gap-4">                            
+                        {/* <div className="mt-6 grid grid-cols-3 gap-4">                            
                             <button className="!rounded-button flex justify-center items-center py-3 px-4 border border-gray-300 bg-white hover:bg-gray-50">                                <i className="fab fa-google text-[#EA4335]"></i>
                             </button>
                             <button className="!rounded-button flex justify-center items-center py-3 px-4 border border-gray-300 bg-[#FEE500] hover:bg-[#FEE500]/90">                                <i className="fas fa-comment text-[#000000]"></i>
                             </button>
                             <button className="!rounded-button flex justify-center items-center py-3 px-4 border border-gray-300 bg-[#03C75A] hover:bg-[#03C75A]/90">                                <span className="text-white font-bold">N</span>
                             </button>
-                        </div>                    
+                        </div>                     */}
                     </div>
 
                     <div className="mt-8 text-center text-sm">
