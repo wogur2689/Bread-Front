@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>로그인</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet">    
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="min-h-screen bg-gray-50 font-['Noto_Sans_KR']">
+    <div class="flex min-h-screen flex-col">
+        <header class="py-6">            
+            <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-center">
+                    <a href="/" class="flex items-center space-x-2">                        
+                        <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="로고" class="h-8 w-auto">
+                    </a>                
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow">
+            <div class="mx-auto max-w-md px-4 py-12 sm:px-6 lg:px-8">                
+                <div class="bg-white px-8 py-10 shadow-sm rounded-lg">
+                    <div class="mb-8 text-center">
+                        <h2 class="text-2xl font-bold text-gray-900">로그인</h2>
+                    </div>
+
+                    <form class="space-y-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">이메일</label>
+                            <div class="mt-1 relative">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                    
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <input id="email" name="email" type="email" required class="!rounded-button block w-full pl-10 py-3 border border-gray-300 focus:ring-custom focus:border-custom" placeholder="이메일 주소를 입력하세요">                            </div>
+                        </div>
+
+                        <div>
+                            <label for="password" class="block text-sm font-medium text-gray-700">비밀번호</label>
+                            <div class="mt-1 relative">
+                                <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                    
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                                <input id="password" name="password" type="password" required class="!rounded-button block w-full pl-10 py-3 border border-gray-300 focus:ring-custom focus:border-custom" placeholder="비밀번호를 입력하세요">                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">                            
+                            <div class="flex items-center">
+                                <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-custom focus:ring-custom border-gray-300 !rounded">                                <label for="remember-me" class="ml-2 block text-sm text-gray-700">로그인 상태 유지</label>                            </div>
+                        </div>
+
+                        <button type="submit" class="!rounded-button w-full py-3 bg-custom text-white hover:bg-custom/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-custom">                            로그인
+                        </button>
+                    </form>
+
+                    <div class="mt-8">                        
+                        <div class="relative">
+                            <div class="absolute inset-0 flex items-center">
+                                <div class="w-full border-t border-gray-300"></div>
+                            </div>
+                            <div class="relative flex justify-center text-sm">
+                                <span class="px-2 bg-white text-gray-500">간편 로그인</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 grid grid-cols-3 gap-4">                            
+                            <button class="!rounded-button flex justify-center items-center py-3 px-4 border border-gray-300 bg-white hover:bg-gray-50">                                <i class="fab fa-google text-[#EA4335]"></i>
+                            </button>
+                            <button class="!rounded-button flex justify-center items-center py-3 px-4 border border-gray-300 bg-[#FEE500] hover:bg-[#FEE500]/90">                                <i class="fas fa-comment text-[#000000]"></i>
+                            </button>
+                            <button class="!rounded-button flex justify-center items-center py-3 px-4 border border-gray-300 bg-[#03C75A] hover:bg-[#03C75A]/90">                                <span class="text-white font-bold">N</span>
+                            </button>
+                        </div>                    
+                    </div>
+
+                    <div class="mt-8 text-center text-sm">
+                        <a href="#" class="text-custom hover:text-custom/90">아이디/비밀번호 찾기</a>
+                        <span class="mx-2 text-gray-500">|</span>
+                        <a href="#" class="text-custom hover:text-custom/90">회원가입</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bg-white border-t border-gray-200">            
+            <div class="mx-auto max-w-8xl px-4 py-6 sm:px-6 lg:px-8">
+                <div class="text-center text-sm text-gray-500">                    
+                    <div class="space-x-4">
+                        <a href="#" class="hover:text-gray-900">개인정보 처리방침</a>                        
+                        <a href="#" class="hover:text-gray-900">이용약관</a>
+                        <a href="#" class="hover:text-gray-900">고객센터</a>
+                    </div>
+                    <p class="mt-4">고객센터: 1234-5678 (평일 09:00-18:00)</p>
+                </div>            
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
