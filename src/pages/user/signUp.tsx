@@ -1,11 +1,68 @@
+import { apiClient } from "@/api/apiClient"
+import { useState } from "react";
+
+//객체의 필드 타입 설정
+interface FormData {
+    userId: string;
+    password: string;
+    name: string;
+    nickName: string;
+    email: string;
+    birthDate: string;
+    address: string;
+    phoneNumber: string;
+}
+
 export default function signUp() {
+    const [formData, setFormData] = useState<FormData>({
+        userId: '',
+        password: '',
+        name: '',
+        nickName: '',
+        email: '',
+        birthDate: '', 
+        address: '',
+        phoneNumber: ''
+      });
+
+    //input 값의 변경을 감지
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+    
+    //submit시 실행 이벤트
+    const handlerSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        //vaild
+        const requiredFields: (keyof FormData)[] = ['userId', 'password', 'name', 'nickName', 'email', 'birthDate', 'address', 'phoneNumber']; // 필수 필드 나열
+        if (!requiredFields.every((field) => formData[field].trim() !== '')) {
+            console.log('필수 값 누락');
+        }
+
+        try {
+            const response = await fetch("http://localhost:3001/users/signUp", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            });
+            console.log(response);
+        } catch (err: any) {
+            console.log(err.message);
+        }
+        
+    }
+
     return <>
     <div className="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">        
         <div className="max-w-md w-full space-y-8">
             <div className="text-center">            
                 <h2 className="mt-6 text-3xl font-bold text-gray-900">회원가입</h2>
             </div>
-            <form className="mt-8 space-y-6" action="#" method="POST">                
+            <form className="mt-8 space-y-6" onSubmit={handlerSubmit} method="POST">                
                 <div className="rounded-md shadow-sm space-y-4">
                     <div>
                         <label htmlFor="userId" className="block text-sm font-medium text-gray-700">아이디</label>
@@ -13,7 +70,14 @@ export default function signUp() {
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                    
                                 <i className="fas fa-envelope"></i>
                             </span>
-                            <input id="userId" name="userId" type="text" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="test"/>
+                            <input id="userId" 
+                                name="userId" 
+                                type="text" 
+                                required
+                                value={formData.userId} 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="test"
+                                onChange={handleChange}/>
                         </div>
                     </div>
                     <div>
@@ -22,7 +86,14 @@ export default function signUp() {
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-envelope"></i>
                             </span>
-                            <input id="email" name="email" type="email" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="example@email.com"/>
+                            <input id="email"
+                                name="email"
+                                type="email" 
+                                required 
+                                value={formData.email}
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="example@email.com"
+                                onChange={handleChange}/>
                         </div>
                     </div>
                     <div>
@@ -31,7 +102,14 @@ export default function signUp() {
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-lock"></i>
                             </span>
-                            <input id="password" name="password" type="password" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="비밀번호 입력"/>                        
+                            <input id="password" 
+                                name="password" 
+                                type="password"
+                                value={formData.password} 
+                                required 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="비밀번호 입력"
+                                onChange={handleChange}/>                        
                         </div>
                     </div>
                     <div>
@@ -40,7 +118,14 @@ export default function signUp() {
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-user"></i>
                             </span>
-                            <input id="name" name="name" type="text" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="이름 입력"/>
+                            <input id="name" 
+                                name="name" 
+                                type="text" 
+                                value={formData.name} 
+                                required 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="이름 입력"
+                                onChange={handleChange}/>
                         </div>
                     </div>
                     <div>
@@ -49,16 +134,30 @@ export default function signUp() {
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-user"></i>
                             </span>
-                            <input id="nickName" name="nickName" type="text" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="닉네임"/>
+                            <input id="nickName" 
+                                name="nickName" 
+                                type="text" 
+                                value={formData.nickName} 
+                                required 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="닉네임"
+                                onChange={handleChange}/>
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="brithDate" className="block text-sm font-medium text-gray-700">생년월일</label>
+                        <label htmlFor="birthDate" className="block text-sm font-medium text-gray-700">생년월일</label>
                         <div className="mt-1 relative">
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-user"></i>
                             </span>
-                            <input id="brithDate" name="brithDate" type="text" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="0000-00-00"/>
+                            <input id="birthDate" 
+                                name="birthDate" 
+                                type="text" 
+                                value={formData.birthDate} 
+                                required 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="0000-00-00"
+                                onChange={handleChange}/>
                         </div>
                     </div>
                     <div>
@@ -67,16 +166,30 @@ export default function signUp() {
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-user"></i>
                             </span>
-                            <input id="address" name="address" type="text" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="서울시"/>
+                            <input id="address" 
+                                name="address" 
+                                type="text" 
+                                value={formData.address} 
+                                required 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="서울시"
+                                onChange={handleChange}/>
                         </div>
                     </div>
                     <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700">휴대폰 번호</label>
+                        <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700">휴대폰 번호</label>
                         <div className="mt-1 relative">
                             <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                
                                 <i className="fas fa-phone"></i>
                             </span>
-                            <input id="phone" name="phone" type="tel" required className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" placeholder="010-0000-0000"/>
+                            <input id="phoneNumber" 
+                                name="phoneNumber" 
+                                value={formData.phoneNumber} 
+                                type="tel" 
+                                required 
+                                className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                placeholder="010-0000-0000"
+                                onChange={handleChange}/>
                             </div>
                     </div>
                 </div>

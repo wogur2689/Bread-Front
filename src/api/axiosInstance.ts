@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:5000', // 기본 API URL
+    baseURL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3001', // 기본 API URL
     timeout: 10000, // 요청 제한 시간
     headers: {
         'Content-Type': 'application/json',
