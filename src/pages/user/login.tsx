@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 //객체의 필드 타입 설정
 interface FormData {
@@ -8,6 +9,8 @@ interface FormData {
 }
 
 export default function login() {
+    const router = useRouter();
+
     const [formData, setFormData] = useState<FormData>({
         userId: '',
         password: '',
@@ -38,7 +41,10 @@ export default function login() {
             body: JSON.stringify(formData)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data);
+            router.push('/');  // 메인 페이지로 이동
+        })
         .catch(err => console.error(err));
         
     }
