@@ -1,7 +1,48 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+
+//객체의 필드 타입 설정
+interface FormData {
+    userId: string;
+    password: string;
+}
 
 export default function login() {
+    const [formData, setFormData] = useState<FormData>({
+        userId: '',
+        password: '',
+    });
+
+    //input 값의 변경을 감지
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+    
+    //submit시 실행 이벤트
+    const handlerSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        //vaild
+        const requiredFields: (keyof FormData)[] = ['userId', 'password']; // 필수 필드 나열
+        if (!requiredFields.every((field) => formData[field].trim() !== '')) {
+            console.log('필수 값 누락');
+        }
+
+        fetch("http://localhost:3001/users/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
+        
+    }
+
     return <>
         <div className="flex min-h-screen flex-col">
         <main className="flex-grow">
@@ -11,14 +52,21 @@ export default function login() {
                         <h2 className="text-2xl font-bold text-gray-900">로그인</h2>
                     </div>
 
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handlerSubmit} method="POST">
                         <div>
                             <label htmlFor="userId" className="block text-sm font-medium text-gray-700">아이디</label>
                             <div className="mt-1 relative">
                                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                    
                                     <i className="fas fa-envelope"></i>
                                 </span>
-                                <input id="userId" name="userId" type="text" required className="!rounded-button block w-full pl-10 py-3 border border-gray-300 focus:ring-custom focus:border-custom" placeholder="아이디를 입력하세요"/>                            
+                                <input id="userId" 
+                                    name="userId" 
+                                    type="text" 
+                                    required
+                                    value={formData.userId} 
+                                    className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                    placeholder="아이디를 입력하세요"
+                                    onChange={handleChange}/>
                             </div>
                         </div>
 
@@ -28,7 +76,14 @@ export default function login() {
                                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-400">                                    
                                     <i className="fas fa-lock"></i>
                                 </span>
-                                <input id="password" name="password" type="password" required className="!rounded-button block w-full pl-10 py-3 border border-gray-300 focus:ring-custom focus:border-custom" placeholder="비밀번호를 입력하세요"/>                            
+                                <input id="password" 
+                                    name="password" 
+                                    type="password"
+                                    value={formData.password} 
+                                    required 
+                                    className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
+                                    placeholder="비밀번호 입력"
+                                    onChange={handleChange}/>
                             </div>
                         </div>
 

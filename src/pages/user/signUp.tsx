@@ -1,4 +1,3 @@
-import { apiClient } from "@/api/apiClient"
 import { useState } from "react";
 
 //객체의 필드 타입 설정
@@ -32,7 +31,7 @@ export default function signUp() {
     };
     
     //submit시 실행 이벤트
-    const handlerSubmit = async (e: React.FormEvent) => {
+    const handlerSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         //vaild
@@ -41,19 +40,17 @@ export default function signUp() {
             console.log('필수 값 누락');
         }
 
-        try {
-            const response = await fetch("http://localhost:3001/users/signUp", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
-            console.log(response);
-        } catch (err: any) {
-            console.log(err.message);
-        }
-        
+        fetch("http://localhost:3001/users/signUp", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(formData)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.error(err));
     }
 
     return <>
@@ -76,7 +73,7 @@ export default function signUp() {
                                 required
                                 value={formData.userId} 
                                 className="!rounded-button appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 shadow-sm placeholder-gray-400 focus:outline-none focus:ring-custom focus:border-custom sm:text-sm" 
-                                placeholder="test"
+                                placeholder="아이디를 입력하세요."
                                 onChange={handleChange}/>
                         </div>
                     </div>
