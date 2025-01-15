@@ -1,4 +1,4 @@
-import { apiClient } from '@/api/apiClient';
+import { apiClient, ApiResponse } from '@/api/apiClient';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -23,9 +23,11 @@ export default function MyPage() {
     //마이페이지 데이터 불러오기
     const fetchData = async () => {
         try {
-            const response = await apiClient({
+            const userId: string | null = localStorage.getItem('userId');
+            const response = await apiClient<ApiResponse<data>>({
                 method: 'GET',
-                url: 'http://localhost:3001/api/user/mypage',
+                url: 'http://localhost:3001/users/mypage',
+                params: { userId }
             });
             setData(response.data); // 서버 응답 데이터를 state에 저장
         } catch (err) {
@@ -36,10 +38,11 @@ export default function MyPage() {
     // 프로필 수정 핸들러
     const handleProfileUpdate = async () => {
         try {
+            const userId: string | null = localStorage.getItem('userId');
             await apiClient({
-                method: 'POST',
+                method: 'GET',
                 url: 'http://localhost:3001/api/user/mypage',
-                data: data
+                params: {'userId': userId }
             });
             alert('프로필이 수정되었습니다.');
         } catch (err) {
@@ -49,7 +52,7 @@ export default function MyPage() {
     };
 
     useEffect(() => {  
-        // fetchData();
+        fetchData();
     }, []);
 
     return <>

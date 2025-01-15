@@ -9,6 +9,12 @@ interface ApiRequestOptions {
     headers?: Record<string, string>; // 추가 헤더
 }
 
+export interface ApiResponse<T> {
+    code: number;
+    message: string;
+    data: T;
+}
+
 export const apiClient = async <T>(options: ApiRequestOptions): Promise<T> => {
     const { method, url, data, params, headers } = options;
     const response = await axiosInstance.request<T>({

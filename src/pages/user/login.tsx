@@ -42,7 +42,7 @@ export default function Login() {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            localStorage.setItem('userId', data.data);
             router.push('/');  // 메인 페이지로 이동
         })
         .catch(err => console.error(err));
