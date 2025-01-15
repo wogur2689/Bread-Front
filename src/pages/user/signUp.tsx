@@ -12,7 +12,7 @@ interface FormData {
     phoneNumber: string;
 }
 
-export default function signUp() {
+export default function SignUp() {
     const [formData, setFormData] = useState<FormData>({
         userId: '',
         password: '',
@@ -22,7 +22,7 @@ export default function signUp() {
         birthDate: '', 
         address: '',
         phoneNumber: ''
-      });
+    });
 
     //input 값의 변경을 감지
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,12 +1,11 @@
 // API 호출 함수
 import axiosInstance from './axiosInstance';
-import endpoints from './endpoints';
 
 interface ApiRequestOptions {
-    method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
+    method: 'GET' | 'POST';
     url: string;
-    data?: any; // POST/PUT에서 보낼 데이터
-    params?: Record<string, any>; // GET 쿼리 파라미터
+    data?: unknown; // POST/PUT에서 보낼 데이터
+    params?: Record<string, unknown>; // GET 쿼리 파라미터
     headers?: Record<string, string>; // 추가 헤더
 }
 
@@ -25,7 +24,6 @@ export const apiClient = async <T>(options: ApiRequestOptions): Promise<T> => {
 /**
  * 사용방법
     import { apiClient } from '@/api/apiClient';
-    import { API_ENDPOINTS } from '@/api/endpoints';
 
     const fetchUsers = async () => {
     const users = await apiClient({
