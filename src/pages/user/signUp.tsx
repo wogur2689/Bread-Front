@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 //객체의 필드 타입 설정
@@ -13,6 +14,7 @@ interface FormData {
 }
 
 export default function SignUp() {
+    const router = useRouter();
     const [formData, setFormData] = useState<FormData>({
         userId: '',
         password: '',
@@ -49,7 +51,13 @@ export default function SignUp() {
             body: JSON.stringify(formData)
         })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.code === "0000") {
+                router.push('/user/login');  // 로그인 페이지로 이동    
+            } else {
+                alert(data.msg);
+            }
+        })
         .catch(err => console.error(err));
     }
 

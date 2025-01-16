@@ -42,8 +42,12 @@ export default function Login() {
         })
         .then(res => res.json())
         .then(data => {
-            localStorage.setItem('userId', data.data);
-            router.push('/');  // 메인 페이지로 이동
+            if (data.code === "0000") {
+                localStorage.setItem('userId', data.data);
+                router.push('/');  // 메인 페이지로 이동    
+            } else {
+                alert(data.msg);
+            }
         })
         .catch(err => console.error(err));
         
