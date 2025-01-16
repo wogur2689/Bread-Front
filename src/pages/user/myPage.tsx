@@ -1,5 +1,6 @@
 import { apiClient, ApiResponse } from '@/api/apiClient';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
 //객체의 필드 타입 설정
@@ -12,6 +13,7 @@ interface data {
 }
 
 export default function MyPage() {
+    const router = useRouter();
     const [data, setData] = useState<data>({
         userId: '',
         name: '',
@@ -49,6 +51,12 @@ export default function MyPage() {
             console.error('프로필 수정 실패:', err);
             alert('프로필 수정에 실패했습니다.');
         }
+    };
+
+    //로그아웃
+    const logout = () => {
+        localStorage.removeItem('userId');
+        router.push('/');
     };
 
     useEffect(() => {  
@@ -156,7 +164,7 @@ export default function MyPage() {
                             </div>
                             */}
                             <div className="flex justify-end">
-                                <button className="!rounded-button bg-custom text-white px-4 py-2 text-sm font-medium">로그아웃</button>
+                                <button className="!rounded-button bg-custom text-white px-4 py-2 text-sm font-medium" onClick={logout}>로그아웃</button>
                             </div>
                         </div>
                     </div>
