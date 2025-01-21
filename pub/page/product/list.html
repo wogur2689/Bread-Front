@@ -1,0 +1,146 @@
+<!DOCTYPE html><html lang="ko"><head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>상품 목록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <link href="https://ai-public.creatie.ai/gen_page/tailwind-custom.css" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com/3.4.5?plugins=forms@0.5.7,typography@0.5.13,aspect-ratio@0.4.2,container-queries@0.1.1"></script>
+    <script src="https://ai-public.creatie.ai/gen_page/tailwind-config.min.js" data-color="#000000" data-border-radius="small"></script>
+</head>
+<body class="bg-gray-50 font-[&#39;Noto_Sans_KR&#39;]">
+    <nav class="bg-white border-b">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="Logo" class="h-8 w-auto"/>
+                    <div class="hidden sm:ml-8 sm:flex sm:space-x-8">
+                        <a href="#" class="text-custom border-b-2 border-custom px-1 pt-1 text-sm font-medium">홈</a>
+                        <a href="#" class="text-gray-500 hover:text-custom px-1 pt-1 text-sm font-medium">카테고리</a>
+                        <a href="#" class="text-gray-500 hover:text-custom px-1 pt-1 text-sm font-medium">신상품</a>
+                        <a href="#" class="text-gray-500 hover:text-custom px-1 pt-1 text-sm font-medium">베스트</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative w-96">
+                        <input type="text" placeholder="검색어를 입력하세요" class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-button focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom"/>
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 flex items-center space-x-4">
+                        <button class="text-gray-500 hover:text-custom">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                        </button>
+                        <button class="!rounded-button bg-custom text-white px-4 py-2 text-sm font-medium hover:bg-opacity-90">로그인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex space-x-4">
+                <select class="border border-gray-300 rounded-button py-2 px-4 focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom">
+                    <option>전체 카테고리</option>
+                    <option>식빵</option>
+                    <option>베이글</option>
+                    <option>페이스트리</option>
+                </select>
+            </div>
+            <div class="flex space-x-4">
+                <select class="border border-gray-300 rounded-button py-2 px-4 focus:outline-none focus:ring-1 focus:ring-custom focus:border-custom">
+                    <option>최신순</option>
+                    <option>인기순</option>
+                    <option>낮은가격순</option>
+                    <option>높은가격순</option>
+                </select>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a fresh classic croissant on a light gray background, showing flaky layers and golden brown color&width=400&height=400&orientation=squarish&flag=d4bfeb52-40f1-46b5-902f-fb8eb21e7226" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">클래식 크루아상</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">4,500원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a freshly baked premium white bread loaf on a light gray background&width=400&height=400&orientation=squarish&flag=5d51c8f7-05fb-4b2a-ae29-f090174243ea" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">프리미엄 식빵</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">6,000원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a whole grain bagel on a light gray background, showing sesame seeds and perfect texture&width=400&height=400&orientation=squarish&flag=970142f1-9406-4b86-b03b-3913e2577f3d" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">통밀 베이글</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">3,500원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a chocolate brioche bread on a light gray background, showing rich chocolate swirls&width=400&height=400&orientation=squarish&flag=7ed11ff8-9bd3-49c0-9674-9e00fdea284e" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">초코 브리오슈</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">5,500원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a fresh French baguette on a light gray background, showing crispy crust&width=400&height=400&orientation=squarish&flag=87900a53-f082-43af-8718-dc0ef04ed719" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">프렌치 바게트</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">4,000원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a rye bread loaf on a light gray background, showing dense texture&width=400&height=400&orientation=squarish&flag=633c89a2-a508-4c81-b99a-73521c70b0f6" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">호밀빵</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">5,000원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a ciabatta bread on a light gray background, showing rustic texture&width=400&height=400&orientation=squarish&flag=828f04cf-8e53-46ab-8245-8ef67ce67060" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">치아바타</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">4,500원</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of soft dinner rolls on a light gray background, showing fluffy texture&width=400&height=400&orientation=squarish&flag=c431ab40-5eb4-4fa2-b9b9-d4ebfd35ffd9" class="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                <div class="p-4">
+                    <h3 class="text-lg font-medium text-gray-900">소프트 롤빵</h3>
+                    <p class="mt-2 text-xl font-bold text-custom">3,000원</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 flex justify-center">
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">이전</span>
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-custom bg-custom text-sm font-medium text-white">1</a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+                <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">8</a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">9</a>
+                <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">10</a>
+                <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">다음</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </nav>
+        </div>
+    </main>
+    <footer class="bg-white border-t mt-12">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-500 text-sm">
+                © 2024 Your Company. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
