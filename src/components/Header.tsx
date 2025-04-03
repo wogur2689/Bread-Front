@@ -20,7 +20,7 @@ export default function Header() {
         try {
             const response = await apiClient<ApiResponse<menu>>({
                 method: 'GET',
-                url: 'http://localhost:3001/users/mypage'
+                url: 'http://localhost:3001/menu/menuList'
             });
             setMenu(response.data);
         } catch (err) {
