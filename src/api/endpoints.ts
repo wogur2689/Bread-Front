@@ -3,7 +3,7 @@ const endpoints = {
     USERS: '/users',
     PRODUCTS: '/products',
     ORDERS: '/orders',
-    MENUS: '/menus'
+    MENUS: '/menu'
 };
 
 export default endpoints;
