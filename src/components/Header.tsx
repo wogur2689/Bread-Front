@@ -7,12 +7,16 @@ import { useState, useEffect } from 'react';
 interface menu {
     menuName : string;
     menuUrl : string;
+    menuLevel : Number;
+    sortOrder : string;
 }
 
 export default function Header() {
     const [menu, setMenu] = useState<menu>({
         menuName : '',
-        menuUrl : ''
+        menuUrl : '',
+        menuLevel : 1,
+        sortOrder : ''
     });
 
     //메뉴 불러오기
