@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 interface menu {
     menuName : string;
     menuUrl : string;
-    menuLevel : Number;
+    menuLevel : string;
     sortOrder : string;
 }
 
@@ -15,7 +15,7 @@ export default function Header() {
     const [menu, setMenu] = useState<menu>({
         menuName : '',
         menuUrl : '',
-        menuLevel : 1,
+        menuLevel : '',
         sortOrder : ''
     });
 
