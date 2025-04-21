@@ -43,10 +43,10 @@ export default function Header() {
                     <div className="flex items-center">
                         <Image src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="로고" className="h-8 w-auto" width={100} height={100}/>                    
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            {menu.map(data => {
+                            {/* {menu.map(data => {
 
                                 <a key={data.key} href="#" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">매장안내</a>
-                            })}
+                            })} */}
                             <Link href="/" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">홈</Link>
                             <Link href="/product" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">메뉴</Link>
                             <a href="#" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">매장안내</a>
