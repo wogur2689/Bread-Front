@@ -21,6 +21,7 @@ export default function Header() {
                 method: 'GET',
                 url: 'http://localhost:3001/menu/menuList'
             });
+            console.log(response);
             setMenu(response.data);
         } catch (err) {
             console.error('데이터 불러오기 실패:', err);
@@ -38,14 +39,16 @@ export default function Header() {
                     <div className="flex items-center">
                         <Image src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="로고" className="h-8 w-auto" width={100} height={100}/>                    
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-                            {/* {menu.map((item, index) => {
-                                <a key={index} href={item.menuUrl}></a>
-                            })} */}
-                            <Link href="/" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">홈</Link>
+                            {menu.map((item, index) => (
+                                <Link key={index} href={item.menuUrl} className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">
+                                    {item.menuName}
+                                </Link>
+                            ))}
+                            {/* <Link href="/" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">홈</Link>
                             <Link href="/product" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">메뉴</Link>
                             <a href="#" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">매장안내</a>
                             <a href="#" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">주문하기</a>                        
-                            <Link href="/user/myPage" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">마이페이지</Link>
+                            <Link href="/user/myPage" className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">마이페이지</Link> */}
                         </div>                
                     </div>
                     <div className="flex items-center">
