@@ -1,15 +1,6 @@
-import { apiClient, ApiResponse } from '@/api/apiClient';
+import { Menu } from '@/types/menu';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-
-//메뉴객체의 필드 타입 설정
-interface Menu {
-    menuName : string;
-    menuUrl : string;  
-    menuLevel : string;
-    sortOrder : string;
-}
 
 interface PageProps {
     menuData: Menu[]; // menuData는 배열

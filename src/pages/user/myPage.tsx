@@ -1,20 +1,12 @@
 import { apiClient, ApiResponse } from '@/api/apiClient';
+import { user } from '@/types/user';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 
-//객체의 필드 타입 설정
-interface data {
-    userId: string;
-    name: string;
-    nickName: string;
-    email: string;
-    profileImage: string;
-}
-
 export default function MyPage() {
     const router = useRouter();
-    const [data, setData] = useState<data>({
+    const [data, setData] = useState<user>({
         userId: '',
         name: '',
         nickName: '',
@@ -26,7 +18,7 @@ export default function MyPage() {
     const fetchData = async () => {
         try {
             const userId: string | null = localStorage.getItem('userId');
-            const response = await apiClient<ApiResponse<data>>({
+            const response = await apiClient<ApiResponse<user>>({
                 method: 'GET',
                 url: 'http://localhost:3001/users/mypage',
                 params: { userId }

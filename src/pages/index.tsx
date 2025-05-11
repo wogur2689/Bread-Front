@@ -5,13 +5,7 @@ import Banner from '@/components/main/Banner';
 import Card from '@/components/main/Card';
 import Category from '@/components/main/Category';
 import Store from '@/components/main/Store';
-
-interface Menu {
-    menuName : string;
-    menuUrl : string;  
-    menuLevel : string;
-    sortOrder : string;
-}
+import { Menu } from '@/types/menu';
 
 interface PageProps {
     menuData: Menu[]; // menuData는 배열
