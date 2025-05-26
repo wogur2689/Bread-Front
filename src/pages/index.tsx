@@ -1,14 +1,16 @@
 import { apiClient, ApiResponse } from '@/api/apiClient';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
+import Footer from '@/components/common/Footer';
+import Header from '@/components/common/Header';
+import Layout from '@/components/common/Layout';
 import Banner from '@/components/main/Banner';
 import Card from '@/components/main/Card';
 import Category from '@/components/main/Category';
 import Store from '@/components/main/Store';
 import { Menu } from '@/types/menu';
+import { useEffect } from 'react';
 
 interface PageProps {
-    menuData: Menu[]; // menuData는 배열
+    menuData: Menu[];
 }
 
 export async function getStaticProps() {
@@ -28,12 +30,15 @@ export async function getStaticProps() {
 }
 
 export default function index({ menuData }: PageProps) {
+    useEffect(() => {
+        // 클라이언트에서 세션 저장
+        sessionStorage.setItem('menuData', JSON.stringify(menuData));
+    }, [menuData]);
+
     return <>
-        <Header menuData={menuData}></Header>
         <Banner></Banner>
         <Card></Card>
         <Category></Category>
         <Store></Store>
-        <Footer></Footer>
     </>
 }
