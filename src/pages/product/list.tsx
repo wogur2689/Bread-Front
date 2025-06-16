@@ -1,3 +1,21 @@
+const data = [
+    {
+        'src': '/img/ButterCroissant.png',
+        'name': '버터 크로와상',
+        'price': '3,500원'
+    },
+    {
+        'src': '/img/fruitTart.png',
+        'name': '통밀 식빵',
+        'price': '4,500원'
+    },
+    {
+        'src': '/img/wholeWheatBread.png',
+        'name': '과일 타르트',
+        'price': '5,500원'
+    }
+];
+
 export default function list() {
     return (
         <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -20,62 +38,15 @@ export default function list() {
                 </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a fresh classNameic croissant on a light gray background, showing flaky layers and golden brown color&width=400&height=400&orientation=squarish&flag=d4bfeb52-40f1-46b5-902f-fb8eb21e7226" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">클래식 크루아상</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">4,500원</p>
+                {data.map((product, index) => (
+                    <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                        <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a fresh classNameic croissant on a light gray background, showing flaky layers and golden brown color&width=400&height=400&orientation=squarish&flag=d4bfeb52-40f1-46b5-902f-fb8eb21e7226" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
+                        <div className="p-4">
+                            <h3 className="text-lg font-medium text-gray-900">{product.name}</h3>
+                            <p className="mt-2 text-xl font-bold text-custom">{product.price}원</p>
+                        </div>
                     </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a freshly baked premium white bread loaf on a light gray background&width=400&height=400&orientation=squarish&flag=5d51c8f7-05fb-4b2a-ae29-f090174243ea" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">프리미엄 식빵</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">6,000원</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a whole grain bagel on a light gray background, showing sesame seeds and perfect texture&width=400&height=400&orientation=squarish&flag=970142f1-9406-4b86-b03b-3913e2577f3d" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">통밀 베이글</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">3,500원</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a chocolate brioche bread on a light gray background, showing rich chocolate swirls&width=400&height=400&orientation=squarish&flag=7ed11ff8-9bd3-49c0-9674-9e00fdea284e" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">초코 브리오슈</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">5,500원</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a fresh French baguette on a light gray background, showing crispy crust&width=400&height=400&orientation=squarish&flag=87900a53-f082-43af-8718-dc0ef04ed719" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">프렌치 바게트</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">4,000원</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a rye bread loaf on a light gray background, showing dense texture&width=400&height=400&orientation=squarish&flag=633c89a2-a508-4c81-b99a-73521c70b0f6" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">호밀빵</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">5,000원</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of a ciabatta bread on a light gray background, showing rustic texture&width=400&height=400&orientation=squarish&flag=828f04cf-8e53-46ab-8245-8ef67ce67060" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">치아바타</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">4,500원</p>
-                    </div>
-                </div>
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                    <img src="https://creatie.ai/ai/api/search-image?query=A professional food photography of soft dinner rolls on a light gray background, showing fluffy texture&width=400&height=400&orientation=squarish&flag=c431ab40-5eb4-4fa2-b9b9-d4ebfd35ffd9" className="w-full h-64 object-cover object-center" alt="상품 이미지"/>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium text-gray-900">소프트 롤빵</h3>
-                        <p className="mt-2 text-xl font-bold text-custom">3,000원</p>
-                    </div>
-                </div>
+                ))}
             </div>
             <div className="mt-8 flex justify-center">
                 <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
