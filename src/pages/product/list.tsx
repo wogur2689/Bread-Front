@@ -1,3 +1,6 @@
+import Pagination from "@/components/common/Pagination";
+import { useState } from "react";
+
 const data = [
     {
         'src': '/img/ButterCroissant.png',
@@ -16,7 +19,18 @@ const data = [
     }
 ];
 
+const TOTAL_ITEMS = 100;
+const PAGE_SIZE = 10;
+
 export default function list() {
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const totalPages = Math.ceil(TOTAL_ITEMS / PAGE_SIZE);
+    const posts = Array.from({ length: PAGE_SIZE }, (_, i) => ({
+        id: (currentPage - 1) * PAGE_SIZE + i + 1,
+        title: `게시글 ${ (currentPage - 1) * PAGE_SIZE + i + 1 }`,
+    }));
+
     return (
         <main className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex justify-between items-center mb-8">
@@ -48,7 +62,12 @@ export default function list() {
                     </div>
                 ))}
             </div>
-            <div className="mt-8 flex justify-center">
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+            />
+            {/* <div className="mt-8 flex justify-center">
                 <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
                     <a href="#" className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                         <span className="sr-only">이전</span>
@@ -66,7 +85,7 @@ export default function list() {
                         <i className="fas fa-chevron-right"></i>
                     </a>
                 </nav>
-            </div>
+            </div> */}
         </main>
     );
 }
