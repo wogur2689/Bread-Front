@@ -1,5 +1,5 @@
 import { apiClient, ApiResponse } from '@/api/apiClient';
-import { user } from '@/types/user';
+import { user } from '@/types/web/user';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';

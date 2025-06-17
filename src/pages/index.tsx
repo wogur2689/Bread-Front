@@ -6,7 +6,7 @@ import Banner from '@/components/main/Banner';
 import Card from '@/components/main/Card';
 import Category from '@/components/main/Category';
 import Store from '@/components/main/Store';
-import { Menu } from '@/types/menu';
+import { Menu } from '@/types/web/menu';
 import { useEffect } from 'react';
 
 interface PageProps {

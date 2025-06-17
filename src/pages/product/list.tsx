@@ -19,6 +19,12 @@ const data = [
     }
 ];
 
+//객체의 필드 타입 설정
+interface filterData {
+    userId: string;
+    password: string;
+}
+
 const TOTAL_ITEMS = 100;
 const PAGE_SIZE = 10;
 

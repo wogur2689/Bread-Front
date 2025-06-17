@@ -1,4 +1,4 @@
-import { Menu } from '@/types/menu';
+import { Menu } from '@/types/web/menu';
 import Image from 'next/image';
 import Link from 'next/link';
 
