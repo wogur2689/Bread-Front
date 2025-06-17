@@ -26,10 +26,10 @@ export default function list() {
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = Math.ceil(TOTAL_ITEMS / PAGE_SIZE);
-    const posts = Array.from({ length: PAGE_SIZE }, (_, i) => ({
-        id: (currentPage - 1) * PAGE_SIZE + i + 1,
-        title: `게시글 ${(currentPage - 1) * PAGE_SIZE + i + 1}`,
-    }));
+    // const posts = Array.from({ length: PAGE_SIZE }, (_, i) => ({
+    //     id: (currentPage - 1) * PAGE_SIZE + i + 1,
+    //     title: `게시글 ${(currentPage - 1) * PAGE_SIZE + i + 1}`,
+    // }));
 
     return (
         <>
