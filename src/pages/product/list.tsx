@@ -1,30 +1,7 @@
 import { apiClient, ApiResponse } from "@/api/apiClient";
 import Pagination from "@/components/common/Pagination";
-import { useState } from "react";
-
-const data = [
-    {
-        'src': '/img/ButterCroissant.png',
-        'name': '버터 크로와상',
-        'price': '3,500원'
-    },
-    {
-        'src': '/img/fruitTart.png',
-        'name': '통밀 식빵',
-        'price': '4,500원'
-    },
-    {
-        'src': '/img/wholeWheatBread.png',
-        'name': '과일 타르트',
-        'price': '5,500원'
-    }
-];
-
-//객체의 필드 타입 설정
-interface filterData {
-    userId: string;
-    password: string;
-}
+import { Product } from "@/types/web/product";
+import { useEffect, useState } from "react";
 
 const TOTAL_ITEMS = 100;
 const PAGE_SIZE = 10;
@@ -38,16 +15,12 @@ export default function list() {
     //     title: `게시글 ${(currentPage - 1) * PAGE_SIZE + i + 1}`,
     // }));
 
-    const [data, setData] = useState<>({
-            name: '',
-            price: '',
-            imageUrl: ''
-    });
+    const [data, setData] = useState<Product[]>();
     
     //마이페이지 데이터 불러오기
     const fetchData = async () => {
         try {
-            const response = await apiClient<ApiResponse<>>({
+            const response = await apiClient<ApiResponse<Product[]>>({
                 method: 'GET',
                 url: 'http://localhost:3001/product/list',
             });
@@ -56,6 +29,10 @@ export default function list() {
             console.error('데이터 불러오기 실패:', err);
         }
     };
+
+    useEffect(() => {  
+        fetchData();
+    }, []);
 
     return (
         <>
