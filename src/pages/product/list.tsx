@@ -1,3 +1,4 @@
+import { apiClient, ApiResponse } from "@/api/apiClient";
 import Pagination from "@/components/common/Pagination";
 import { useState } from "react";
 
@@ -36,6 +37,25 @@ export default function list() {
     //     id: (currentPage - 1) * PAGE_SIZE + i + 1,
     //     title: `게시글 ${(currentPage - 1) * PAGE_SIZE + i + 1}`,
     // }));
+
+    const [data, setData] = useState<>({
+            name: '',
+            price: '',
+            imageUrl: ''
+    });
+    
+    //마이페이지 데이터 불러오기
+    const fetchData = async () => {
+        try {
+            const response = await apiClient<ApiResponse<>>({
+                method: 'GET',
+                url: 'http://localhost:3001/product/list',
+            });
+            setData(response.data); // 서버 응답 데이터를 state에 저장
+        } catch (err) {
+            console.error('데이터 불러오기 실패:', err);
+        }
+    };
 
     return (
         <>
