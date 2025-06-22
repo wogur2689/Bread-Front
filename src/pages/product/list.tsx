@@ -15,9 +15,9 @@ export default function list() {
     //     title: `게시글 ${(currentPage - 1) * PAGE_SIZE + i + 1}`,
     // }));
 
-    const [data, setData] = useState<Product[]>();
+    const [data, setData] = useState<Product[]>([]);
     
-    //마이페이지 데이터 불러오기
+    //상품 데이터 불러오기
     const fetchData = async () => {
         try {
             const response = await apiClient<ApiResponse<Product[]>>({
