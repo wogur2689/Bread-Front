@@ -16,7 +16,7 @@ interface PageProps {
 export async function getStaticProps() {
     const res = await apiClient<ApiResponse<Menu[]>>({
                     method: 'GET',
-                    url: 'http://localhost:3001/menu/menuList'
+                    url: 'http://localhost:3001/menu/list'
                 });
 
     const menuData = res.data;
