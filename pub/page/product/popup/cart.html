@@ -1,11 +1,467 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>장바구니 - logo</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B5E3C",
+                        secondary: "#D4C3B5",
+                    },
+                    borderRadius: {
+                        none: "0px",
+                        sm: "4px",
+                        DEFAULT: "8px",
+                        md: "12px",
+                        lg: "16px",
+                        xl: "20px",
+                        "2xl": "24px",
+                        "3xl": "32px",
+                        full: "9999px",
+                        button: "8px",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-white shadow-sm border-b border-secondary/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-['Pacifico'] text-primary">logo</h1>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">홈</a>
+                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">카테고리</a>
+                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">베스트</a>
+                    <a href="#" class="text-gray-700 hover:text-primary transition-colors">이벤트</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button
+                        class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-search-line ri-lg"></i>
+                    </button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-heart-line ri-lg"></i>
+                    </button>
+                    <button class="w-10 h-10 flex items-center justify-center text-primary">
+                        <i class="ri-shopping-cart-fill ri-lg"></i>
+                    </button>
+                    <button
+                        class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary transition-colors">
+                        <i class="ri-user-line ri-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">장바구니</h1>
+            <p class="text-gray-600">선택한 상품을 확인하고 주문을 진행하세요</p>
+        </div>
+        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+            <div class="lg:col-span-8">
+                <div class="bg-white rounded-lg shadow-sm border mb-6">
+                    <div class="p-6 border-b">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <label class="flex items-center cursor-pointer">
+                                    <input type="checkbox" id="selectAll" class="sr-only" />
+                                    <div
+                                        class="w-5 h-5 border-2 border-gray-300 rounded flex items-center justify-center checkbox-custom">
+                                        <i class="ri-check-line text-white text-sm hidden"></i>
+                                    </div>
+                                    <span class="ml-3 text-gray-900 font-medium">전체 선택 (3개)</span>
+                                </label>
+                            </div>
+                            <button class="text-gray-500 hover:text-red-500 transition-colors text-sm font-medium">
+                                선택 삭제
+                            </button>
+                        </div>
+                    </div>
+                    <div class="divide-y">
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <label class="flex items-center cursor-pointer mt-2">
+                                    <input type="checkbox" class="sr-only item-checkbox" checked />
+                                    <div
+                                        class="w-5 h-5 border-2 border-primary bg-primary rounded flex items-center justify-center">
+                                        <i class="ri-check-line text-white text-sm"></i>
+                                    </div>
+                                </label>
+                                <div class="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://readdy.ai/api/search-image?query=freshly%20baked%20sourdough%20bread%20with%20crispy%20crust%20and%20rustic%20texture%20on%20light%20background%2C%20artisanal%20bakery%20product%20photography%2C%20warm%20natural%20lighting%2C%20appetizing%20bread%20details&width=200&height=200&seq=cart1&orientation=squarish"
+                                        alt="사워도우 브레드" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                                        프리미엄 사워도우 브레드
+                                    </h3>
+                                    <p class="text-sm text-gray-500 mb-2">
+                                        당일 생산 | 중량: 450g
+                                    </p>
+                                    <div class="flex items-center space-x-2 mb-3">
+                                        <span
+                                            class="px-2 py-1 bg-secondary/30 text-primary text-xs rounded-full">당일배송</span>
+                                        <span class="text-xs text-gray-500">오늘 오후 3시 전 도착</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center border rounded-lg">
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 quantity-btn">
+                                                    <i class="ri-subtract-line"></i>
+                                                </button>
+                                                <span
+                                                    class="w-12 text-center text-sm font-medium quantity-value">1</span>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 quantity-btn">
+                                                    <i class="ri-add-line"></i>
+                                                </button>
+                                            </div>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-lg font-bold text-gray-900">
+                                                ₩8,500
+                                            </div>
+                                            <div class="text-sm text-gray-500 line-through">
+                                                ₩9,500
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <label class="flex items-center cursor-pointer mt-2">
+                                    <input type="checkbox" class="sr-only item-checkbox" checked />
+                                    <div
+                                        class="w-5 h-5 border-2 border-primary bg-primary rounded flex items-center justify-center">
+                                        <i class="ri-check-line text-white text-sm"></i>
+                                    </div>
+                                </label>
+                                <div class="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://readdy.ai/api/search-image?query=assorted%20french%20croissants%2C%20butter%20croissants%20with%20flaky%20layers%20and%20golden%20brown%20color%20on%20light%20background%2C%20bakery%20product%20photography%2C%20appetizing%20pastry%20details&width=200&height=200&seq=cart2&orientation=squarish"
+                                        alt="크루아상" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                                        프랑스산 버터 크루아상
+                                    </h3>
+                                    <p class="text-sm text-gray-500 mb-2">
+                                        당일 생산 | 중량: 85g
+                                    </p>
+                                    <div class="flex items-center space-x-2 mb-3">
+                                        <span
+                                            class="px-2 py-1 bg-secondary/30 text-primary text-xs rounded-full">당일배송</span>
+                                        <span class="text-xs text-gray-500">오늘 오후 3시 전 도착</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center border rounded-lg">
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 quantity-btn">
+                                                    <i class="ri-subtract-line"></i>
+                                                </button>
+                                                <span
+                                                    class="w-12 text-center text-sm font-medium quantity-value">1</span>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 quantity-btn">
+                                                    <i class="ri-add-line"></i>
+                                                </button>
+                                            </div>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-lg font-bold text-gray-900">
+                                                ₩4,500
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-start space-x-4">
+                                <label class="flex items-center cursor-pointer mt-2">
+                                    <input type="checkbox" class="sr-only item-checkbox" checked />
+                                    <div
+                                        class="w-5 h-5 border-2 border-primary bg-primary rounded flex items-center justify-center">
+                                        <i class="ri-check-line text-white text-sm"></i>
+                                    </div>
+                                </label>
+                                <div class="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                    <img src="https://readdy.ai/api/search-image?query=chocolate%20cake%20with%20rich%20ganache%20frosting%20and%20fresh%20berries%20on%20top%2C%20elegant%20dessert%20photography%20on%20light%20background%2C%20moist%20cake%20texture%2C%20appetizing%20details&width=200&height=200&seq=cart3&orientation=squarish"
+                                        alt="초콜릿 케이크" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                                        프리미엄 초콜릿 케이크
+                                    </h3>
+                                    <p class="text-sm text-gray-500 mb-2">
+                                        당일 생산 | 사이즈: 1호 (15cm)
+                                    </p>
+                                    <div class="flex items-center space-x-2 mb-3">
+                                        <span
+                                            class="px-2 py-1 bg-secondary/30 text-primary text-xs rounded-full">예약배송</span>
+                                        <span class="text-xs text-gray-500">7월 20일 수령 가능</span>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <div class="flex items-center border rounded-lg">
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 quantity-btn">
+                                                    <i class="ri-subtract-line"></i>
+                                                </button>
+                                                <span
+                                                    class="w-12 text-center text-sm font-medium quantity-value">2</span>
+                                                <button
+                                                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 quantity-btn">
+                                                    <i class="ri-add-line"></i>
+                                                </button>
+                                            </div>
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                                <i class="ri-delete-bin-line"></i>
+                                            </button>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-lg font-bold text-gray-900">
+                                                ₩70,000
+                                            </div>
+                                            <div class="text-sm text-gray-500">₩35,000 × 2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border">
+                    <div class="p-6 border-b">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                            함께 구매하면 좋은 상품
+                        </h2>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="w-full h-32 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=freshly%20baked%20cinnamon%20rolls%20with%20cream%20cheese%20frosting%2C%20sweet%20pastry%20on%20light%20background%2C%20warm%20natural%20lighting%2C%20appetizing%20bakery%20details&width=200&height=200&seq=rec1&orientation=squarish"
+                                        alt="시나몬 롤" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <h3 class="text-sm font-medium text-gray-900 mb-1">
+                                    시나몬 롤
+                                </h3>
+                                <p class="text-sm text-primary font-semibold">₩4,500</p>
+                            </div>
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="w-full h-32 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=artisanal%20baguette%20with%20crispy%20crust%20and%20perfect%20scoring%2C%20traditional%20french%20bread%20on%20light%20background%2C%20bakery%20product%20photography%2C%20rustic%20bread%20details&width=200&height=200&seq=rec2&orientation=squarish"
+                                        alt="바게트" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <h3 class="text-sm font-medium text-gray-900 mb-1">
+                                    프랑스 바게트
+                                </h3>
+                                <p class="text-sm text-primary font-semibold">₩4,800</p>
+                            </div>
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="w-full h-32 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=fresh%20fruit%20tart%20with%20custard%20filling%20and%20glazed%20berries%2C%20elegant%20pastry%20on%20light%20background%2C%20patisserie%20style%20photography%2C%20delicate%20dessert%20details&width=200&height=200&seq=rec3&orientation=squarish"
+                                        alt="과일 타르트" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <h3 class="text-sm font-medium text-gray-900 mb-1">
+                                    과일 타르트
+                                </h3>
+                                <p class="text-sm text-primary font-semibold">₩6,500</p>
+                            </div>
+                            <div class="border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="w-full h-32 bg-gray-100 rounded-lg mb-3 overflow-hidden">
+                                    <img src="https://readdy.ai/api/search-image?query=assorted%20macarons%20in%20pastel%20colors%2C%20french%20macarons%20with%20various%20flavors%20on%20light%20background%2C%20elegant%20pastry%20photography%2C%20delicate%20cookie%20details&width=200&height=200&seq=rec4&orientation=squarish"
+                                        alt="마카롱" class="w-full h-full object-cover object-top" />
+                                </div>
+                                <h3 class="text-sm font-medium text-gray-900 mb-1">
+                                    마카롱 세트
+                                </h3>
+                                <p class="text-sm text-primary font-semibold">₩12,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lg:col-span-4 mt-8 lg:mt-0">
+                <div class="bg-white rounded-lg shadow-sm border sticky top-8">
+                    <div class="p-6">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                            주문 요약
+                        </h2>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">상품 금액 (4개)</span>
+                                <span class="text-gray-900">₩83,000</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">할인 금액</span>
+                                <span class="text-red-500">-₩1,000</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">배송비</span>
+                                <span class="text-gray-900">무료</span>
+                            </div>
+                            <div class="border-t pt-3">
+                                <div class="flex justify-between">
+                                    <span class="text-lg font-semibold text-gray-900">총 결제 금액</span>
+                                    <span class="text-xl font-bold text-primary">₩82,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div
+                                class="flex items-center justify-between p-3 border border-dashed border-gray-300 rounded-lg">
+                                <div class="flex items-center space-x-2">
+                                    <i class="ri-coupon-line text-primary"></i>
+                                    <span class="text-sm text-gray-600">쿠폰 적용</span>
+                                </div>
+                                <button class="text-sm text-primary font-medium">선택</button>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <button
+                                class="w-full bg-primary text-white py-4 rounded-button font-semibold hover:bg-[#6B4423] transition-colors whitespace-nowrap">
+                                주문하기
+                            </button>
+                            <button
+                                class="w-full border border-gray-300 text-gray-700 py-3 rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap">
+                                선택 상품 찜하기
+                            </button>
+                        </div>
+                        <div class="mt-6 pt-6 border-t">
+                            <div class="text-xs text-gray-500 space-y-1">
+                                <p>• 당일 생산 제품은 오전 11시까지 주문 시 당일 배송</p>
+                                <p>• 쿠폰 및 적립금 사용 시 추가 할인 가능</p>
+                                <p>• 케이크는 최소 2일 전 예약 필수</p>
+                                <p>• 신선도 유지를 위해 아이스팩 포장</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script id="checkbox-functionality">
+        document.addEventListener("DOMContentLoaded", function () {
+            const selectAllCheckbox = document.getElementById("selectAll");
+            const itemCheckboxes = document.querySelectorAll(".item-checkbox");
+            function updateSelectAll() {
+                const checkedItems = document.querySelectorAll(".item-checkbox:checked");
+                const selectAllContainer =
+                    selectAllCheckbox.parentElement.querySelector(".checkbox-custom");
+                const selectAllIcon = selectAllContainer.querySelector("i");
+                const selectAllText = selectAllCheckbox.parentElement.querySelector("span");
+                if (checkedItems.length === itemCheckboxes.length) {
+                    selectAllCheckbox.checked = true;
+                    selectAllContainer.classList.add("bg-primary", "border-primary");
+                    selectAllContainer.classList.remove("border-gray-300");
+                    selectAllIcon.classList.remove("hidden");
+                } else {
+                    selectAllCheckbox.checked = false;
+                    selectAllContainer.classList.remove("bg-primary", "border-primary");
+                    selectAllContainer.classList.add("border-gray-300");
+                    selectAllIcon.classList.add("hidden");
+                }
+                selectAllText.textContent = `전체 선택 (${checkedItems.length}개)`;
+            }
+            selectAllCheckbox.addEventListener("change", function () {
+                const selectAllContainer =
+                    this.parentElement.querySelector(".checkbox-custom");
+                const selectAllIcon = selectAllContainer.querySelector("i");
+                itemCheckboxes.forEach((checkbox) => {
+                    checkbox.checked = this.checked;
+                    const container = checkbox.parentElement.querySelector("div");
+                    const icon = container.querySelector("i");
+                    if (this.checked) {
+                        container.classList.add("bg-primary", "border-primary");
+                        container.classList.remove("border-gray-300");
+                        icon.classList.remove("hidden");
+                    } else {
+                        container.classList.remove("bg-primary", "border-primary");
+                        container.classList.add("border-gray-300");
+                        icon.classList.add("hidden");
+                    }
+                });
+                if (this.checked) {
+                    selectAllContainer.classList.add("bg-primary", "border-primary");
+                    selectAllContainer.classList.remove("border-gray-300");
+                    selectAllIcon.classList.remove("hidden");
+                } else {
+                    selectAllContainer.classList.remove("bg-primary", "border-primary");
+                    selectAllContainer.classList.add("border-gray-300");
+                    selectAllIcon.classList.add("hidden");
+                }
+                updateSelectAll();
+            });
+            itemCheckboxes.forEach((checkbox) => {
+                checkbox.addEventListener("change", function () {
+                    const container = this.parentElement.querySelector("div");
+                    const icon = container.querySelector("i");
+                    if (this.checked) {
+                        container.classList.add("bg-primary", "border-primary");
+                        container.classList.remove("border-gray-300");
+                        icon.classList.remove("hidden");
+                    } else {
+                        container.classList.remove("bg-primary", "border-primary");
+                        container.classList.add("border-gray-300");
+                        icon.classList.add("hidden");
+                    }
+                    updateSelectAll();
+                });
+            });
+            updateSelectAll();
+        });
+    </script>
+    <script id="quantity-controls">
+        document.addEventListener("DOMContentLoaded", function () {
+            const quantityBtns = document.querySelectorAll(".quantity-btn");
+            quantityBtns.forEach((btn) => {
+                btn.addEventListener("click", function () {
+                    const isIncrement = this.querySelector(".ri-add-line");
+                    const quantitySpan = this.parentElement.querySelector(".quantity-value");
+                    let currentValue = parseInt(quantitySpan.textContent);
+                    if (isIncrement) {
+                        currentValue++;
+                    } else {
+                        if (currentValue > 1) {
+                            currentValue--;
+                        }
+                    }
+                    quantitySpan.textContent = currentValue;
+                });
+            });
+        });
+    </script>
 </body>
+
 </html>
