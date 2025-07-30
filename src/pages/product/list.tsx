@@ -31,11 +31,6 @@ export default function list() {
         }
     };
 
-    //상품 상세 페이지로 이동
-    const pageMoveDetail = async () => {
-
-    }
-
     useEffect(() => {  
         fetchData();
     }, []);
@@ -74,7 +69,7 @@ export default function list() {
             </div> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 {data.map((product, index) => (
-                    <Link href="/product/detail">
+                    <Link href={`/product/detail/${product.id}`}>
                     <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <img src={product.imageUrl} alt="상품 이미지" />
                         <div className="p-4">
