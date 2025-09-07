@@ -5,14 +5,14 @@ import { useRouter } from 'next/router';
 import Link from "next/link";
 
 export default function detail() {
-    const [data, setData] = useState<Product[]>([]);
+    const [data, setData] = useState<Product | null>(null);
     const router = useRouter();
     const { id } = router.query;
         
     //상품 데이터 불러오기
     const fetchData = async () => {
         try {
-            const response = await apiClient<ApiResponse<Product[]>>({
+            const response = await apiClient<ApiResponse<Product>>({
                 method: 'GET',
                 url: 'http://localhost:3001/product/detail/' + id,
             });
@@ -23,8 +23,9 @@ export default function detail() {
     };
 
     useEffect(() => {  
+        if (!id) return; // id가 없으면 요청하지 않음
         fetchData();
-    }, []);
+    }, [id]);
 
     return (
         <div>
@@ -47,8 +48,8 @@ export default function detail() {
                 <div className="lg:w-1/2">
                     <div className="relative overflow-hidden rounded-lg mb-4">
                     <img id="mainImage"
-                        src="https://readdy.ai/api/search-image?query=A%20professional%20food%20photography%20of%20a%20cream%20cheese%20bread%20loaf%2C%20soft%20and%20fluffy%20texture%2C%20with%20visible%20cream%20cheese%20swirls%20inside%2C%20on%20a%20wooden%20cutting%20board%2C%20with%20a%20rustic%20bakery%20background%2C%20warm%20lighting%2C%20high-resolution%2C%20appetizing&width=600&height=600&seq=1&orientation=squarish"
-                        alt="크림 치즈 식빵" className="w-full h-auto object-cover rounded-lg" />
+                        src={data?.imageUrl}
+                        alt={data?.name} className="w-full h-auto object-cover rounded-lg" />
                     <div className="absolute bottom-4 right-4 bg-white bg-opacity-80 rounded-full p-2 cursor-pointer">
                         <div className="w-6 h-6 flex items-center justify-center">
                         <i className="ri-zoom-in-line"></i>
@@ -57,9 +58,9 @@ export default function detail() {
                     </div>
                 </div>
                 <div className="lg:w-1/2">
-                    <h1 className="text-3xl font-bold mb-2">크림 치즈 식빵</h1>
+                    <h1 className="text-3xl font-bold mb-2">{data?.name}</h1>
                     <div className="mb-6">
-                        <div className="text-2xl font-bold text-primary mb-1">4,800원</div>
+                        <div className="text-2xl font-bold text-primary mb-1">{data?.price}원</div>
                     </div>
                     <p className="text-gray-700 mb-6">
                     부드러운 식빵 속에 크림치즈가 듬뿍 들어간 프리미엄 식빵입니다. 매일
@@ -87,7 +88,7 @@ export default function detail() {
 
                     <div className="flex justify-between items-center mb-6">
                         <span className="text-gray-800 font-medium">총 상품 금액</span>
-                        <div className="text-xl font-bold text-primary">4,800원</div>
+                        <div className="text-xl font-bold text-primary">{data?.price}</div>
                     </div>
 
                     <div className="flex space-x-4">
@@ -113,8 +114,8 @@ export default function detail() {
                 <div id="details" className="tab-content py-8">
                     <div className="max-w-3xl mx-auto">
                     <img
-                        src="https://readdy.ai/api/search-image?query=A%20detailed%20image%20showing%20the%20inside%20texture%20of%20cream%20cheese%20bread%2C%20with%20visible%20cream%20cheese%20swirls%2C%20on%20a%20wooden%20background%20with%20some%20ingredients%20like%20flour%2C%20cream%20cheese%20blocks%2C%20and%20butter%20visible%2C%20professional%20food%20photography%2C%20bright%20lighting&width=800&height=500&seq=5&orientation=landscape"
-                        alt="크림 치즈 식빵 상세" className="w-full rounded-lg mb-8" />
+                        src={data?.imageUrl}
+                        alt={data?.name} className="w-full rounded-lg mb-8" />
 
                     <h3 className="text-xl font-bold mb-4">제품 설명</h3>
                     <p className="text-gray-700 mb-6">
