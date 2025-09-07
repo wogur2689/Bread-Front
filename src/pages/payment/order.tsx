@@ -4,7 +4,7 @@ import { Product } from "@/types/web/product";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-export default function list() {
+export default function order() {
   return (
       <div id="success-page" className="min-h-screen flex flex-col">
         <main className="flex-1 flex items-center justify-center py-16">
