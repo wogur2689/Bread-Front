@@ -3,6 +3,7 @@ import Pagination from "@/components/common/Pagination";
 import { Product } from "@/types/web/product";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Order } from "@/types/web/order";
 
 export default function order() {
   return (
@@ -22,20 +23,14 @@ export default function order() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">결제 금액</span>
-                    <span className="font-medium text-gray-900">32,500원</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">결제 수단</span>
-                    <span className="font-medium text-gray-900"
-                      >신용카드 (KB국민카드)</span
-                    >
+                    <span className="font-medium text-gray-900">5,000원</span>
                   </div>
                 </div>
 
                 <div className="border-t pt-4">
                   <h3 className="font-medium text-gray-900 mb-3">주문 상품</h3>
                   <div className="space-y-2">
-                    <div className="flex justify-between items-center">
+                    {/* <div className="flex justify-between items-center">
                       <div className="flex items-center space-x-3">
                         <img
                           src="https://readdy.ai/api/search-image?query=fresh%20baked%20croissant%20on%20white%20background%2C%20golden%20brown%2C%20flaky%20pastry%2C%20bakery%20product%20photography%2C%20clean%20minimal%20background&width=60&height=60&seq=croissant1&orientation=squarish"
@@ -48,35 +43,7 @@ export default function order() {
                         </div>
                       </div>
                       <span className="font-medium text-gray-900">7,000원</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img
-                          src="https://readdy.ai/api/search-image?query=chocolate%20muffin%20with%20chocolate%20chips%20on%20white%20background%2C%20bakery%20product%20photography%2C%20moist%20texture%2C%20clean%20minimal%20background&width=60&height=60&seq=muffin1&orientation=squarish"
-                          alt="초콜릿 머핀"
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
-                        <div>
-                          <p className="font-medium text-gray-900">초콜릿 머핀</p>
-                          <p className="text-sm text-gray-500">4,200원 × 1개</p>
-                        </div>
-                      </div>
-                      <span className="font-medium text-gray-900">4,200원</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center space-x-3">
-                        <img
-                          src="https://readdy.ai/api/search-image?query=fresh%20baguette%20bread%20on%20white%20background%2C%20golden%20crust%2C%20artisan%20bakery%20bread%2C%20clean%20minimal%20background&width=60&height=60&seq=baguette1&orientation=squarish"
-                          alt="바게트"
-                          className="w-12 h-12 rounded-lg object-cover"
-                        />
-                        <div>
-                          <p className="font-medium text-gray-900">프랑스 바게트</p>
-                          <p className="text-sm text-gray-500">5,800원 × 1개</p>
-                        </div>
-                      </div>
-                      <span className="font-medium text-gray-900">5,800원</span>
-                    </div>
+                    </div> */}
                     <div className="flex justify-between items-center">
                       <div className="flex items-center space-x-3">
                         <img
@@ -98,15 +65,8 @@ export default function order() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  className="flex-1 bg-primary text-white py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"
-                >
-                  주문 내역 보기
-                </button>
-                <button
-                  className="flex-1 bg-secondary text-primary py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"
-                >
-                  쇼핑 계속하기
+                <button className="flex-1 bg-secondary text-primary py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">
+                  결제하기
                 </button>
               </div>
             </div>

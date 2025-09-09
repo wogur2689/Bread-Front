@@ -72,16 +72,16 @@ export default function detail() {
                     <div className="flex justify-between items-center mb-4">
                         <span className="text-gray-700">수량</span>
                         <div className="flex items-center">
-                        <button id="decreaseBtn"
+                        {/* <button id="decreaseBtn"
                             className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-l-lg">
                             <i className="ri-subtract-line"></i>
-                        </button>
+                        </button> */}
                         <input type="number" id="quantity" value="1" min="1"
                             className="w-12 h-8 text-center border-t border-b border-gray-300 border-none" />
-                        <button id="increaseBtn"
+                        {/* <button id="increaseBtn"
                             className="w-8 h-8 flex items-center justify-center border border-gray-300 rounded-r-lg">
                             <i className="ri-add-line"></i>
-                        </button>
+                        </button> */}
                         </div>
                     </div>
                     </div>
@@ -93,10 +93,9 @@ export default function detail() {
 
                     <div className="flex space-x-4">
                     <button className="w-1/2 border border-primary text-primary py-3 font-medium !rounded-button whitespace-nowrap">
-                        장바구니 담기
-                    </button>
-                    <button className="w-1/2 bg-primary text-white py-3 font-medium !rounded-button whitespace-nowrap">
+                    <Link href='/payment/order/'>
                         바로 구매하기
+                    </Link>
                     </button>
                     </div>
                 </div>
