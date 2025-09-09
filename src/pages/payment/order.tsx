@@ -30,12 +30,6 @@ export default function order() {
                       >신용카드 (KB국민카드)</span
                     >
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">결제 일시</span>
-                    <span className="font-medium text-gray-900"
-                      >2025.01.17 14:32</span
-                    >
-                  </div>
                 </div>
 
                 <div className="border-t pt-4">
