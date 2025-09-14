@@ -63,9 +63,7 @@ export default function detail() {
                         <div className="text-2xl font-bold text-primary mb-1">{data?.price}원</div>
                     </div>
                     <p className="text-gray-700 mb-6">
-                    부드러운 식빵 속에 크림치즈가 듬뿍 들어간 프리미엄 식빵입니다. 매일
-                    아침 신선하게 구워내어 최상의 맛과 식감을 제공합니다. 토스트로 살짝
-                    구워 드시면 더욱 맛있게 즐기실 수 있습니다.
+                    {data?.desc}
                     </p>
 
                     <div className="border-t border-b border-gray-200 py-6 mb-6">
@@ -93,7 +91,18 @@ export default function detail() {
 
                     <div className="flex space-x-4">
                     <button className="w-1/2 border border-primary text-primary py-3 font-medium !rounded-button whitespace-nowrap">
-                    <Link href='/payment/order/'>
+                    <Link
+                        href={{
+                            pathname: '/payment/order',
+                            query: {
+                                id: data?.id,
+                                name: data?.name,
+                                price: data?.price,
+                                imageUrl: data?.imageUrl,
+                                quantity: 1
+                            }
+                        }}
+                    >
                         바로 구매하기
                     </Link>
                     </button>
