@@ -23,7 +23,7 @@ export default function order() {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
                     <span className="text-gray-600">주문 번호</span>
-                    <span className="font-medium text-gray-900">2025001247</span>
+                    <span className="font-medium text-gray-900">2025</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">결제 금액</span>
