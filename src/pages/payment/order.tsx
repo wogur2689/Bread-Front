@@ -6,9 +6,41 @@ import Link from "next/link";
 import { Order } from "@/types/web/order";
 import { useRouter } from "next/router";
 
+declare global {
+  interface Window {
+    goPay: (form: any) => void;
+  }
+}
+
 export default function order() {
   const router = useRouter();
   const { name, price, imageUrl, quantity } = router.query;
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://web.nicepay.co.kr/v3/webstd/js/nicepay-3.0.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
+
+  // 결제창 호출
+  const handlePayment = () => {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = "/api/payment/request"; // Next.js API → Nest.js proxy 가능
+
+    // 주문정보 hidden input
+    form.innerHTML = `
+      <input type="hidden" name="GoodsName" value="상품" />
+      <input type="hidden" name="Amt" value="100" />
+      <input type="hidden" name="MID" value="1234" />
+      <input type="hidden" name="Moid" value="1234" />
+      <input type="hidden" name="ReturnURL" value="http://localhost:3000/payment/callback" />
+    `;
+
+    document.body.appendChild(form);
+    window.goPay(form);
+  };
 
   return (
       <div id="success-page" className="min-h-screen flex flex-col">
@@ -55,7 +87,8 @@ export default function order() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-secondary text-primary py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap">
+                <button className="flex-1 bg-secondary text-primary py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"
+                  onClick={handlePayment}>
                   결제하기
                 </button>
               </div>
