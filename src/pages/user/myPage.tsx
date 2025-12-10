@@ -10,8 +10,7 @@ export default function MyPage() {
         userId: '',
         name: '',
         nickName: '',
-        email: '',
-        profileImage: ''
+        email: ''
     });
 
     //마이페이지 데이터 불러오기
@@ -52,6 +51,11 @@ export default function MyPage() {
     };
 
     useEffect(() => {  
+        const userId: string | null = localStorage.getItem('userId');
+        if(userId == null) {
+            router.push('/user/login');
+            return;
+        }
         fetchData();
     }, []);
 
@@ -73,11 +77,6 @@ export default function MyPage() {
                 <div className="col-span-12 lg:col-span-3">
                     <div className="bg-white shadow rounded-lg p-6 mb-6">
                         <div className="text-center">                        
-                            <Image className="mx-auto h-24 w-24 rounded-full object-cover" 
-                                src={data.profileImage || ""} 
-                                alt="프로필 이미지"
-                                width={96}
-                                height={96}/> 
                             <h2 className="mt-4 text-xl font-semibold text-gray-900">{data.name}</h2>
                             <p className="text-gray-500">{data.email}</p>
                         </div>
@@ -125,7 +124,6 @@ export default function MyPage() {
                                     type="text" 
                                     value={data.userId} 
                                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-custom focus:border-custom"
-                                    readOnly
                                 />
                             </div>                       
                             <div>
@@ -134,7 +132,6 @@ export default function MyPage() {
                                     type="text" 
                                     value={data.name} 
                                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-custom focus:border-custom"
-                                    readOnly
                                 />                        
                             </div>
                             <div>
@@ -143,7 +140,6 @@ export default function MyPage() {
                                     type="email" 
                                     value={data.email} 
                                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-custom focus:border-custom"
-                                    readOnly
                                 />
                             </div>
                             {/* <div>
