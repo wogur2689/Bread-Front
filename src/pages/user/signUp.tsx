@@ -40,6 +40,8 @@ export default function SignUp() {
         const requiredFields: (keyof FormData)[] = ['userId', 'password', 'name', 'nickName', 'email', 'birthDate', 'address', 'phoneNumber']; // 필수 필드 나열
         if (!requiredFields.every((field) => formData[field].trim() !== '')) {
             console.log('필수 값 누락');
+            //TODO popup 추가
+            return;
         }
 
         fetch("http://localhost:3001/users/signUp", {
