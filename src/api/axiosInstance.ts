@@ -9,15 +9,18 @@ const axiosInstance = axios.create({
     },
 });
 
-// // 요청 인터셉터
-// axiosInstance.interceptors.request.use((config) => {
-//     // 예: 인증 토큰 추가
-//     const token = localStorage.getItem('token');
-//     if (token) {
-//         config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-// });
+// 요청 인터셉터
+axiosInstance.interceptors.request.use((config) => {
+    // 예: 인증 토큰 추가
+    if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('token');
+        if (token) {
+            config.headers = config.headers ?? {};
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+    }
+    return config;
+});
 
 //   // 응답 인터셉터
 // axiosInstance.interceptors.response.use((response) => response, (error) => {

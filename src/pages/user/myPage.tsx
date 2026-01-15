@@ -16,13 +16,11 @@ export default function MyPage() {
     //마이페이지 데이터 불러오기
     const fetchData = async () => {
         try {
-            const userId: string | null = localStorage.getItem('userId');
             const response = await apiClient<ApiResponse<user>>({
                 method: 'GET',
                 url: 'http://localhost:3001/users/mypage',
-                params: { userId }
             });
-            setData(response.data); // 서버 응답 데이터를 state에 저장
+            setData(response.data);
         } catch (err) {
             console.error('데이터 불러오기 실패:', err);
         }
@@ -46,13 +44,14 @@ export default function MyPage() {
 
     //로그아웃
     const logout = () => {
+        localStorage.removeItem('token');
         localStorage.removeItem('userId');
         router.push('/');
     };
 
     useEffect(() => {  
-        const userId: string | null = localStorage.getItem('userId');
-        if(userId == null) {
+        const token = localStorage.getItem('token');
+        if (!token) {
             router.push('/user/login');
             return;
         }

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import axiosInstance from '@/api/axiosInstance';
 
 //객체의 필드 타입 설정
 interface FormData {
@@ -32,24 +33,19 @@ export default function Login() {
             console.log('필수 값 누락');
         }
 
-        fetch("http://localhost:3001/users/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include',
-            body: JSON.stringify(formData)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.code === "0000") {
-                localStorage.setItem('userId', data.data);
-                router.push('/');  // 메인 페이지로 이동    
+        axiosInstance.post('http://localhost:3001/users/login', formData)
+        .then((res) => res.data)
+        .then((data) => {
+            if (data.code === '0000') {
+                const { accessToken, userId } = data.data;
+                localStorage.setItem('token', accessToken);
+                localStorage.setItem('userId', userId);
+                router.push('/');
             } else {
                 alert(data.msg);
             }
         })
-        .catch(err => console.error(err));
+        .catch((err) => console.error(err));
         
     }
 
