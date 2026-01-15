@@ -30,7 +30,7 @@ export default function Header({ menuData }: PageProps) {
             <nav className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">            
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
-                        <Image src="https://ai-public.creatie.ai/gen_page/logo_placeholder.png" alt="로고" className="h-8 w-auto" width={100} height={100}/>                    
+                        <Image src="/bakery.png" alt="로고" className="h-8 w-auto" width={100} height={100}/>                    
                         <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                             {menuData.map((item, index) => (
                                 <Link key={index} href={item.menuUrl} className="text-white hover:text-gray-200 px-3 py-2 text-sm font-medium">
