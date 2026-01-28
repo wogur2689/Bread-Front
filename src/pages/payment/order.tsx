@@ -1,9 +1,4 @@
-import { apiClient, ApiResponse } from "@/api/apiClient";
-import Pagination from "@/components/common/Pagination";
-import { Product } from "@/types/web/product";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Order } from "@/types/web/order";
+import { useEffect, useMemo } from "react";
 import { useRouter } from "next/router";
 
 declare global {
@@ -14,7 +9,16 @@ declare global {
 
 export default function order() {
   const router = useRouter();
-  const { name, price, imageUrl, quantity } = router.query;
+  const { id, name, price, imageUrl, quantity } = router.query;
+
+  const priceNumber = Number(price) || 0;
+  const quantityNumber = Number(quantity) || 1;
+  const totalAmount = priceNumber * quantityNumber;
+
+  const moid = useMemo(
+    () => `${id ?? "temp"}-${Date.now()}`,
+    [id]
+  );
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -31,11 +35,11 @@ export default function order() {
 
     // 주문정보 hidden input
     form.innerHTML = `
-      <input type="hidden" name="GoodsName" value="상품" />
-      <input type="hidden" name="Amt" value="100" />
-      <input type="hidden" name="MID" value="1234" />
-      <input type="hidden" name="Moid" value="1234" />
-      <input type="hidden" name="ReturnURL" value="http://localhost:3000/payment/callback" />
+      <input type="hidden" name="GoodsName" value="${name ?? ""}" />
+      <input type="hidden" name="Amt" value="${totalAmount}" />
+      <input type="hidden" name="MID" value="YOUR_MID_HERE" />
+      <input type="hidden" name="Moid" value="${moid}" />
+      <input type="hidden" name="ReturnURL" value="http://localhost:3000/payment/success" />
     `;
 
     document.body.appendChild(form);
@@ -55,11 +59,11 @@ export default function order() {
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
                     <span className="text-gray-600">주문 번호</span>
-                    <span className="font-medium text-gray-900">2025</span>
+                  <span className="font-medium text-gray-900">{moid}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">결제 금액</span>
-                    <span className="font-medium text-gray-900">{Number(price)}원</span>
+                  <span className="font-medium text-gray-900">{totalAmount}원</span>
                   </div>
                 </div>
 
@@ -77,10 +81,10 @@ export default function order() {
                           <p className="font-medium text-gray-900">
                             {name}
                           </p>
-                          <p className="text-sm text-gray-500">{Number(quantity)}개</p>
+                          <p className="text-sm text-gray-500">{quantityNumber}개</p>
                         </div>
                       </div>
-                      <span className="font-medium text-gray-900">{Number(price)}원</span>
+                      <span className="font-medium text-gray-900">{totalAmount}원</span>
                     </div>
                   </div>
                 </div>
