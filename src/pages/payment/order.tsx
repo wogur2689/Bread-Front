@@ -1,5 +1,7 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
+import { apiClient } from "@/api/apiClient";
+import { ApiResponse } from "@/api/apiClient";
 
 declare global {
   interface Window {
@@ -7,18 +9,25 @@ declare global {
   }
 }
 
+interface PaymentInfo {
+  orderId: string;
+  mid: string;
+  moid: string;
+  amt: string;
+  goodsName: string;
+  ediDate: string;
+  returnUrl: string;
+}
+
 export default function order() {
   const router = useRouter();
   const { id, name, price, imageUrl, quantity } = router.query;
+  const [isLoading, setIsLoading] = useState(false);
+  const [orderId, setOrderId] = useState<string | null>(null);
 
   const priceNumber = Number(price) || 0;
   const quantityNumber = Number(quantity) || 1;
   const totalAmount = priceNumber * quantityNumber;
-
-  const moid = useMemo(
-    () => `${id ?? "temp"}-${Date.now()}`,
-    [id]
-  );
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -28,22 +37,66 @@ export default function order() {
   }, []);
 
   // 결제창 호출
-  const handlePayment = () => {
-    const form = document.createElement("form");
-    form.method = "POST";
-    form.action = "/api/payment/request"; // Next.js API → Nest.js proxy 가능
+  const handlePayment = async () => {
+    if (isLoading) return;
+    
+    setIsLoading(true);
+    try {
+      // 1. 결제 요청 생성
+      const paymentRequestResponse = await apiClient<ApiResponse<any>>({
+        method: 'POST',
+        url: 'http://localhost:3001/payment/request',
+        data: {
+          productId: Number(id),
+          productName: name as string,
+          quantity: quantityNumber,
+          totalAmt: totalAmount,
+        },
+      });
 
-    // 주문정보 hidden input
-    form.innerHTML = `
-      <input type="hidden" name="GoodsName" value="${name ?? ""}" />
-      <input type="hidden" name="Amt" value="${totalAmount}" />
-      <input type="hidden" name="MID" value="YOUR_MID_HERE" />
-      <input type="hidden" name="Moid" value="${moid}" />
-      <input type="hidden" name="ReturnURL" value="http://localhost:3000/payment/success" />
-    `;
+      console.log('데이터 : ', paymentRequestResponse);
 
-    document.body.appendChild(form);
-    window.goPay(form);
+      const createdOrderId = paymentRequestResponse.data.orderId;
+      setOrderId(createdOrderId);
+
+      // 2. 결제 정보 조회 (EdiDate 포함)
+      const paymentInfoResponse = await apiClient<ApiResponse<PaymentInfo>>({
+        method: 'GET',
+        url: `http://localhost:3001/payment/info/${createdOrderId}`,
+      });
+
+      const paymentInfo = paymentInfoResponse.data;
+
+      // 3. 나이스페이 결제창 호출
+      // 나이스페이 결제창은 form을 직접 제출하지 않고, goPay 함수에 전달합니다
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.name = "nicepayForm";
+
+      // 주문정보 hidden input (EdiDate 포함)
+      form.innerHTML = `
+        <input type="hidden" name="GoodsName" value="${paymentInfo.goodsName}" />
+        <input type="hidden" name="Amt" value="${paymentInfo.amt}" />
+        <input type="hidden" name="MID" value="${paymentInfo.mid}" />
+        <input type="hidden" name="Moid" value="${paymentInfo.moid}" />
+        <input type="hidden" name="EdiDate" value="${paymentInfo.ediDate}" />
+        <input type="hidden" name="ReturnURL" value="${paymentInfo.returnUrl}" />
+      `;
+
+      document.body.appendChild(form);
+      
+      // 나이스페이 결제창 호출
+      if (window.goPay) {
+        window.goPay(form);
+      } else {
+        alert('나이스페이 결제 스크립트가 로드되지 않았습니다. 페이지를 새로고침해주세요.');
+      }
+    } catch (error) {
+      console.error('결제 요청 실패:', error);
+      alert('결제 요청에 실패했습니다. 다시 시도해주세요.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -58,11 +111,7 @@ export default function order() {
 
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">주문 번호</span>
-                  <span className="font-medium text-gray-900">{moid}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-600">결제 금액</span>
+                    <span className="text-gray-600">총 결제 금액</span>
                   <span className="font-medium text-gray-900">{totalAmount}원</span>
                   </div>
                 </div>
@@ -91,9 +140,11 @@ export default function order() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="flex-1 bg-secondary text-primary py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap"
-                  onClick={handlePayment}>
-                  결제하기
+                <button 
+                  className="flex-1 bg-secondary text-primary py-3 px-6 rounded-button font-medium hover:bg-opacity-90 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={handlePayment}
+                  disabled={isLoading}>
+                  {isLoading ? '결제 요청 중...' : '결제하기'}
                 </button>
               </div>
             </div>
