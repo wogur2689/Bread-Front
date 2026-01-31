@@ -16,6 +16,8 @@ interface PaymentInfo {
   amt: string;
   goodsName: string;
   ediDate: string;
+  signData: string;
+  payMethod: string;
   returnUrl: string;
 }
 
@@ -31,7 +33,8 @@ export default function order() {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://web.nicepay.co.kr/v3/webstd/js/nicepay-3.0.js";
+    // 나이스페이 웹표준 결제 스크립트
+    script.src = "https://pg-web.nicepay.co.kr/v3/common/js/nicepay-pgweb.js";
     script.async = true;
     document.body.appendChild(script);
   }, []);
@@ -65,7 +68,14 @@ export default function order() {
         url: `http://localhost:3001/payment/info/${createdOrderId}`,
       });
 
+      console.log(paymentInfoResponse);
       const paymentInfo = paymentInfoResponse.data;
+
+      if (!paymentInfo?.signData) {
+        console.error('결제 정보 응답:', paymentInfoResponse);
+        alert('결제 정보(SignData)를 불러오지 못했습니다. 서버 설정(NICEPAY_MERCHANT_KEY, NICEPAY_MID)을 확인해주세요.');
+        return;
+      }
 
       // 3. 나이스페이 결제창 호출
       // 나이스페이 결제창은 form을 직접 제출하지 않고, goPay 함수에 전달합니다
@@ -73,15 +83,22 @@ export default function order() {
       form.method = "POST";
       form.name = "nicepayForm";
 
-      // 주문정보 hidden input (EdiDate 포함)
-      form.innerHTML = `
-        <input type="hidden" name="GoodsName" value="${paymentInfo.goodsName}" />
-        <input type="hidden" name="Amt" value="${paymentInfo.amt}" />
-        <input type="hidden" name="MID" value="${paymentInfo.mid}" />
-        <input type="hidden" name="Moid" value="${paymentInfo.moid}" />
-        <input type="hidden" name="EdiDate" value="${paymentInfo.ediDate}" />
-        <input type="hidden" name="ReturnURL" value="${paymentInfo.returnUrl}" />
-      `;
+      const addHidden = (name: string, value: string) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value ?? "";
+        form.appendChild(input);
+      };
+
+      addHidden("PayMethod", paymentInfo.payMethod || "CARD");
+      addHidden("GoodsName", paymentInfo.goodsName ?? "");
+      addHidden("Amt", paymentInfo.amt ?? "");
+      addHidden("MID", paymentInfo.mid ?? "");
+      addHidden("Moid", paymentInfo.moid ?? "");
+      addHidden("EdiDate", paymentInfo.ediDate ?? "");
+      addHidden("SignData", paymentInfo.signData ?? "");
+      addHidden("ReturnURL", paymentInfo.returnUrl ?? "");
 
       document.body.appendChild(form);
       
