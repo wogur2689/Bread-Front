@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { apiClient } from "@/api/apiClient";
 import { ApiResponse } from "@/api/apiClient";
@@ -56,8 +56,6 @@ export default function order() {
           totalAmt: totalAmount,
         },
       });
-
-      console.log('데이터 : ', paymentRequestResponse);
 
       const createdOrderId = paymentRequestResponse.data.orderId;
       setOrderId(createdOrderId);
